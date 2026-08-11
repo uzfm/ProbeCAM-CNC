@@ -1,5 +1,5 @@
 {
-  "camera_id": "v4l2:0",
+  "camera_id": null,
   "camera_settings": {
     "width": 640,
     "height": 480,
@@ -8,5 +8,5 @@
     "gain": 52,
     "auto_exposure": true
   },
-  "port": "/dev/ttyACM0"
+  "port": "COM1"
 }

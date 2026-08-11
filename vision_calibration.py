@@ -9,6 +9,9 @@ from typing import Optional
 
 import cv2
 import numpy as np
+from core.coordinates import CoordinateProfile
+from core.vision import detect_circle
+from core.workpiece import export_parameters
 from PySide6.QtCore import QEvent, QObject, Qt
 from PySide6.QtWidgets import QCheckBox, QDoubleSpinBox, QLabel, QPushButton, QSpinBox, QTableWidget, QTableWidgetItem
 
@@ -71,6 +74,8 @@ class VisionCalibrationController(QObject):
             "deletePointButton": self.delete_selected_point,
             "clearPointsButton": self.clear_points,
             "cancelSelectionButton": self.cancel_selection,
+            "detectHoleCenterButton": self.detect_hole_center,
+            "exportWorkpieceButton": self.export_workpiece_parameters,
         }
         for name, handler in bindings.items():
             button = root.findChild(QPushButton, name)
@@ -106,6 +111,20 @@ class VisionCalibrationController(QObject):
             "У вкладці «Технічний зір» увімкніть «Малювати лінію мишею» та проведіть лінію точно між "
             "двома мітками. Тут введіть реальну довжину в мм і натисніть «Розрахувати піксель/мм».\n"
             "Після перевірки збережіть калібрування. Воно автоматично завантажиться з камерою."
+        )
+
+    def coordinate_profile(self) -> CoordinateProfile:
+        """Return the single source of truth for pixel/machine transforms."""
+        frame = self.window.latest_frame
+        width = frame.shape[1] if frame is not None else 0
+        height = frame.shape[0] if frame is not None else 0
+        return CoordinateProfile(
+            float(self.calibration_data.get("mm_per_pixel_x", 0.0)),
+            float(self.calibration_data.get("mm_per_pixel_y", 0.0)),
+            float(self.calibration_data.get("target_u", width / 2)),
+            float(self.calibration_data.get("target_v", height / 2)),
+            float(self.calibration_data.get("camera_to_spindle_mm", {}).get("x", 0.0)),
+            float(self.calibration_data.get("camera_to_spindle_mm", {}).get("y", 0.0)),
         )
 
     def frame_gray(self) -> Optional[np.ndarray]:
@@ -371,11 +390,37 @@ class VisionCalibrationController(QObject):
             return
         value = pixel_length / real_length
         self.calibration_data["pixel_per_mm"] = value
+        self.calibration_data["mm_per_pixel_x"] = real_length / pixel_length
+        self.calibration_data["mm_per_pixel_y"] = real_length / pixel_length
         self.calibration_data["scale_reference_mm"] = real_length
         self.calibration_data["scale_reference_pixels"] = pixel_length
         self.calibration_label.setText(
             f"Масштаб: {value:.6f} пкс/мм; лінія {pixel_length:.3f} пкс = {real_length:.3f} мм"
         )
+
+    def detect_hole_center(self) -> None:
+        frame = self.window.latest_frame
+        if frame is None:
+            self.result_label.setText("Запустіть камеру перед пошуком центра отвору")
+            return
+        result = detect_circle(frame, self.roi)
+        if result is None:
+            self.result_label.setText("Коло/отвір не знайдено; уточніть ROI")
+            return
+        profile = self.coordinate_profile()
+        try:
+            dx, dy = profile.pixel_to_camera_mm(*result.center_px)
+            machine = profile.camera_to_machine(dx, dy)
+            self.calibration_data["last_hole"] = {"center_px": list(result.center_px), "x": machine[0], "y": machine[1], "diameter_mm": result.radius_px * 2 * profile.mm_per_pixel_x, "confidence": result.confidence, "residual_px": result.residual_px}
+            self.result_label.setText(f"Центр отвору: dX={dx:.3f} мм, dY={dy:.3f} мм; confidence={result.confidence:.3f}; residual={result.residual_px:.3f} px")
+        except ValueError:
+            self.result_label.setText("Для центра отвору спочатку виконайте калібрування мм/піксель")
+
+    def export_workpiece_parameters(self) -> None:
+        path = self.window.app_dir / "data" / "workpiece_parameters.json"
+        last_hole = self.calibration_data.get("last_hole")
+        export_parameters(path, zero=self.calibration_data.get("zero", {}), angle_deg=self.calibration_data.get("workpiece_angle_deg"), points={f"P{i+1}": [p.get("global_x"), p.get("global_y")] for i, p in enumerate(self.measurement_points)}, holes=[last_hole] if last_hole else [], calibration_profile=self.calibration_file_for_camera().name)
+        self.result_label.setText(f"Параметри заготовки збережено: {path.name}")
 
     def calculate_camera_calibration(self) -> None:
         if len(self.image_points) < 3 or self.image_size is None:

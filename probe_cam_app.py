@@ -17,6 +17,7 @@ from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
     QComboBox,
+    QDoubleSpinBox,
     QFormLayout,
     QGroupBox,
     QLabel,
@@ -83,6 +84,7 @@ class ProbeCAMMainWindow(QMainWindow):
         self.camera_fallback_applied = False
         self.camera_black_signal_reported = False
         self.vision_calibration = VisionCalibrationController(self)
+        self.setup_workflow_tab()
         self.calibration_info_label.setText(self.vision_calibration.calibration_status())
         self.motion_port: Optional[serial.Serial] = None
         self.motion_status_count = 0
@@ -99,6 +101,7 @@ class ProbeCAMMainWindow(QMainWindow):
         self.profile_path = self.app_dir / "data" / "probe_cam_profile.json"
         self.camera_presets_path = self.app_dir / "data" / "camera_presets.json"
         self.camera_presets = self.load_camera_presets()
+        self.display_zoom = 1.0
 
         self.scan_cameras()
         self.load_profile()
@@ -255,6 +258,40 @@ class ProbeCAMMainWindow(QMainWindow):
         self.settings_label.setWordWrap(True)
         self.save_profile_button.clicked.connect(self.save_profile)
         self.load_profile_button.clicked.connect(self.load_profile)
+
+    def setup_workflow_tab(self) -> None:
+        root = self.root_widget
+        self.workflow_zoom_label = root.findChild(QLabel, "workflowZoomLabel")
+        root.findChild(QPushButton, "workflowZoomMinusButton").clicked.connect(lambda: self.set_display_zoom(self.display_zoom / 2))
+        root.findChild(QPushButton, "workflowZoomPlusButton").clicked.connect(lambda: self.set_display_zoom(self.display_zoom * 2))
+        root.findChild(QPushButton, "workflowZoomResetButton").clicked.connect(lambda: self.set_display_zoom(1.0))
+        root.findChild(QPushButton, "workflowTargetButton").clicked.connect(self.calibrate_target)
+        root.findChild(QPushButton, "workflowOffsetButton").clicked.connect(self.save_spindle_offset)
+        root.findChild(QPushButton, "workflowSaveCalibrationButton").clicked.connect(self.vision_calibration.save_calibration)
+        root.findChild(QPushButton, "workflowHoleButton").clicked.connect(self.vision_calibration.detect_hole_center)
+        root.findChild(QPushButton, "workflowPointButton").clicked.connect(lambda: self.vision_calibration.mouse_point.setChecked(True))
+        root.findChild(QPushButton, "workflowAngleButton").clicked.connect(self.vision_calibration.detect_contour_angle)
+        root.findChild(QPushButton, "workflowSetZeroButton").clicked.connect(lambda: self.zero_axis("ALL"))
+        root.findChild(QPushButton, "workflowExportButton").clicked.connect(self.vision_calibration.export_workpiece_parameters)
+
+    def set_display_zoom(self, value: float) -> None:
+        self.display_zoom = max(1.0, min(8.0, float(value)))
+        if self.workflow_zoom_label:
+            self.workflow_zoom_label.setText(f"Zoom: {self.display_zoom:.2f}x (display only)")
+
+    def calibrate_target(self) -> None:
+        frame = self.latest_frame
+        if frame is None:
+            self.log("Target calibration requires an active camera frame")
+            return
+        self.vision_calibration.calibration_data["target_u"] = frame.shape[1] / 2
+        self.vision_calibration.calibration_data["target_v"] = frame.shape[0] / 2
+        self.log(f"Camera target set to ({frame.shape[1]/2:.1f}, {frame.shape[0]/2:.1f})")
+
+    def save_spindle_offset(self) -> None:
+        root = self.root_widget
+        self.vision_calibration.calibration_data["camera_to_spindle_mm"] = {"x": root.findChild(QDoubleSpinBox, "workflowOffsetXSpin").value(), "y": root.findChild(QDoubleSpinBox, "workflowOffsetYSpin").value()}
+        self.log("Camera ↔ Spindle offset stored in calibration profile")
 
     def load_ui_widget(self, relative_path: str) -> Optional[QWidget]:
         ui_file = self.app_dir / relative_path
@@ -520,6 +557,13 @@ class ProbeCAMMainWindow(QMainWindow):
             self.camera_info_label.setText("Відеосигнал камери відновлено")
         self.latest_frame = frame
         display_frame = self.vision_calibration.overlay_frame(frame)
+        if self.display_zoom > 1.0:
+            height, width = display_frame.shape[:2]
+            crop_w, crop_h = int(width / self.display_zoom), int(height / self.display_zoom)
+            cx = int(self.vision_calibration.calibration_data.get("target_u", width / 2))
+            cy = int(self.vision_calibration.calibration_data.get("target_v", height / 2))
+            x0 = max(0, min(width - crop_w, cx - crop_w // 2)); y0 = max(0, min(height - crop_h, cy - crop_h // 2))
+            display_frame = cv2.resize(display_frame[y0:y0 + crop_h, x0:x0 + crop_w], (width, height), interpolation=cv2.INTER_LINEAR)
         rgb = cv2.cvtColor(display_frame, cv2.COLOR_BGR2RGB)
         h, w, ch = rgb.shape
         bytes_per_line = ch * w
@@ -640,6 +684,15 @@ class ProbeCAMMainWindow(QMainWindow):
             self.log(f"RESET ALARM failed: {exc}")
 
     def zero_axis(self, axis: str) -> None:
+        coords = self.motion_last_coords
+        if coords is not None and hasattr(self, "vision_calibration"):
+            zero = self.vision_calibration.calibration_data.setdefault("zero", {})
+            if axis in {"X", "ALL"}:
+                zero["x"] = coords[0]
+            if axis in {"Y", "ALL"}:
+                zero["y"] = coords[1]
+            if axis in {"Z", "ALL"}:
+                zero["z"] = coords[2]
         command = "G10 L20 P1 X0 Y0 Z0\n" if axis == "ALL" else f"G10 L20 P1 {axis}0\n"
         self.send_motion_command(command)
         self.log(f"ZERO {axis}: requested; waiting for updated WPos")

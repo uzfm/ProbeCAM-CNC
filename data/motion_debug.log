@@ -6790,3 +6790,137 @@
 [18:11:37.064] Detected serial ports: ['/dev/ttyACM0']
 [18:11:37.065] Loaded profile from /home/uzfm/ProbeCAM-CNC/data/probe_cam_profile.json
 [18:11:37.066] Application initialized. Load a profile or start scanning cameras.
+[01:16:18.838] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[01:16:18.844] Detected serial ports: ['COM1', 'COM4', 'COM3', 'COM5']
+[01:16:18.845] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[01:16:18.845] Application initialized. Load a profile or start scanning cameras.
+[01:16:37.801] No camera selected
+[01:16:56.007] No camera selected
+[01:17:04.995] Connected to COM5 at 115200 baud; status polling started
+[01:17:05.104] GRBL WPos updated: X=984.588 Y=248.272 Z=-48.580
+[01:17:05.760] GRBL WPos updated: X=61.400 Y=30.472 Z=-79.652
+[01:17:07.919] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:08.163] GRBL WPos updated: X=61.408 Y=30.472 Z=-79.652
+[01:17:09.436] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:09.584] GRBL WPos updated: X=61.412 Y=30.472 Z=-79.652
+[01:17:09.692] GRBL WPos updated: X=61.420 Y=30.472 Z=-79.652
+[01:17:10.201] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:10.361] GRBL WPos updated: X=61.424 Y=30.472 Z=-79.652
+[01:17:10.470] GRBL WPos updated: X=61.428 Y=30.472 Z=-79.652
+[01:17:12.380] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:12.553] GRBL WPos updated: X=61.432 Y=30.472 Z=-79.652
+[01:17:12.659] GRBL WPos updated: X=61.440 Y=30.472 Z=-79.652
+[01:17:12.692] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:12.877] GRBL WPos updated: X=61.448 Y=30.472 Z=-79.652
+[01:17:12.903] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:13.098] GRBL WPos updated: X=61.456 Y=30.472 Z=-79.652
+[01:17:13.129] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:13.208] GRBL WPos updated: X=61.460 Y=30.472 Z=-79.652
+[01:17:13.318] GRBL WPos updated: X=61.468 Y=30.472 Z=-79.652
+[01:17:13.340] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:13.511] BUTTON command sent: 'G91\nG0 X0.01 F600\nG90'
+[01:17:13.533] GRBL WPos updated: X=61.476 Y=30.472 Z=-79.652
+[01:17:13.641] GRBL WPos updated: X=61.480 Y=30.472 Z=-79.652
+[01:17:13.750] GRBL WPos updated: X=61.488 Y=30.472 Z=-79.652
+[01:17:17.052] GRBL WPos updated: X=61.496 Y=30.472 Z=-79.652
+[01:17:17.160] GRBL WPos updated: X=61.508 Y=30.472 Z=-79.652
+[01:17:17.708] GRBL WPos updated: X=61.520 Y=30.472 Z=-79.652
+[01:17:17.927] GRBL WPos updated: X=61.532 Y=30.472 Z=-79.652
+[01:17:18.039] GRBL WPos updated: X=61.540 Y=30.472 Z=-79.652
+[01:17:18.145] GRBL WPos updated: X=61.556 Y=30.472 Z=-79.652
+[01:17:18.256] GRBL WPos updated: X=61.560 Y=30.472 Z=-79.652
+[01:17:18.365] GRBL WPos updated: X=61.572 Y=30.472 Z=-79.652
+[01:17:18.479] GRBL WPos updated: X=61.580 Y=30.472 Z=-79.652
+[01:17:18.587] GRBL WPos updated: X=61.592 Y=30.472 Z=-79.652
+[01:17:18.697] GRBL WPos updated: X=61.600 Y=30.472 Z=-79.652
+[01:17:18.807] GRBL WPos updated: X=61.612 Y=30.472 Z=-79.652
+[01:17:18.916] GRBL WPos updated: X=61.620 Y=30.472 Z=-79.652
+[01:17:19.025] GRBL WPos updated: X=61.632 Y=30.472 Z=-79.652
+[01:17:19.133] GRBL WPos updated: X=61.640 Y=30.472 Z=-79.652
+[01:17:19.243] GRBL WPos updated: X=61.652 Y=30.472 Z=-79.652
+[01:17:19.351] GRBL WPos updated: X=61.660 Y=30.472 Z=-79.652
+[01:17:19.463] GRBL WPos updated: X=61.672 Y=30.472 Z=-79.652
+[01:17:19.571] GRBL WPos updated: X=61.680 Y=30.472 Z=-79.652
+[01:17:19.681] GRBL WPos updated: X=61.692 Y=30.472 Z=-79.652
+[01:17:19.790] GRBL WPos updated: X=61.700 Y=30.472 Z=-79.652
+[01:17:19.898] GRBL WPos updated: X=61.712 Y=30.472 Z=-79.652
+[01:17:20.009] GRBL WPos updated: X=61.720 Y=30.472 Z=-79.652
+[01:17:20.111] GRBL WPos updated: X=61.732 Y=30.472 Z=-79.652
+[01:17:42.900] Vision: no camera frame available
+[01:17:43.660] Vision: no camera frame available
+[01:17:43.982] Vision: no camera frame available
+[01:17:44.207] Vision: no camera frame available
+[01:17:45.020] Vision: no camera frame available
+[01:17:45.403] Vision: no camera frame available
+[01:17:51.068] Vision: no camera frame available
+[01:17:51.474] Vision: no camera frame available
+[01:17:52.674] Vision: no camera frame available
+[01:17:53.635] Vision: no camera frame available
+[02:16:13.863] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:16:13.885] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:16:13.885] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:16:13.886] Application initialized. Load a profile or start scanning cameras.
+[02:16:13.890] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:17:51.072] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:17:51.077] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:17:51.083] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:17:51.083] Application initialized. Load a profile or start scanning cameras.
+[02:17:51.085] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:19:07.152] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:19:07.158] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:19:07.160] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:19:07.160] Application initialized. Load a profile or start scanning cameras.
+[02:20:24.513] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:24:05.566] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:24:05.572] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:24:05.573] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:24:05.573] Application initialized. Load a profile or start scanning cameras.
+[02:24:05.575] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:24:22.272] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:24:22.277] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:24:22.278] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:24:22.278] Application initialized. Load a profile or start scanning cameras.
+[02:25:32.985] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:25:32.991] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:25:32.991] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:25:32.992] Application initialized. Load a profile or start scanning cameras.
+[02:25:32.993] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:25:43.762] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:25:43.767] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:25:43.768] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:25:43.769] Application initialized. Load a profile or start scanning cameras.
+[02:25:43.770] Target calibration requires an active camera frame
+[02:25:43.770] Camera ↔ Spindle offset stored in calibration profile
+[02:25:43.771] Vision: no camera frame available
+[02:25:43.771] No active motion connection
+[02:25:43.771] ZERO ALL: requested; waiting for updated WPos
+[02:25:43.772] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:26:06.994] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:26:07.000] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:26:07.001] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:26:07.001] Application initialized. Load a profile or start scanning cameras.
+[02:26:37.879] Target calibration requires an active camera frame
+[02:26:40.318] Camera ↔ Spindle offset stored in calibration profile
+[02:28:10.275] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:30:09.464] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:30:09.469] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:30:09.470] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:30:09.471] Application initialized. Load a profile or start scanning cameras.
+[02:30:09.473] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:30:23.708] No camera detected by OpenCV; if you have a webcam or Logitech UVC device, try reconnecting it and click Refresh cameras
+[02:30:23.714] Detected serial ports: ['COM1', 'COM4', 'COM5', 'COM3']
+[02:30:23.715] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:30:23.716] Application initialized. Load a profile or start scanning cameras.
+[02:31:39.332] Vision: no camera frame available
+[02:31:40.135] Vision: no camera frame available
+[02:31:40.474] Vision: no camera frame available
+[02:31:40.902] Vision: no camera frame available
+[02:31:46.917] Vision: no camera frame available
+[02:31:47.675] Vision: no camera frame available
+[02:31:48.740] Vision: no camera frame available
+[02:31:49.526] Vision: no camera frame available
+[02:32:06.342] Vision: no camera frame available
+[02:32:06.831] Vision: no camera frame available
+[02:32:07.308] Vision: no camera frame available
+[02:32:45.625] Loaded profile from E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json
+[02:32:57.036] Saved profile to E:\PROGRAM\ProbeCAM-CNC\.git\ProbeCAM-CNC\data\probe_cam_profile.json

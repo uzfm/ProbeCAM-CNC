@@ -1,0 +1,10 @@
+{
+  "camera_id": "unknown",
+  "roi": null,
+  "manual_line": null,
+  "camera_to_spindle_mm": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "measurement_points": []
+}

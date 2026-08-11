@@ -1,4 +1,5 @@
 {
     "cmake.ignoreCMakeListsMissing": true,
-    "python.defaultInterpreterPath": "/usr/bin/python3"
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
