@@ -1,0 +1,6 @@
+qt.qpa.plugin: From 6.5.0, xcb-cursor0 or libxcb-cursor0 is needed to load the Qt xcb platform plugin.
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/home/uzfm/ProbeCAM-CNC/.venv/lib/python3.12/site-packages/cv2/qt/plugins" even though it was found.
+[ WARN:0@2,834] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video1): can't open camera by index
+[ WARN:0@2,834] global cap.cpp:475 open VIDEOIO(V4L2): backend is generally available but can't be used to capture by index
+[ WARN:0@2,834] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video2): can't open camera by index
+[ WARN:0@2,834] global cap.cpp:475 open VIDEOIO(V4L2): backend is generally available but can't be used to capture by index

@@ -1,6 +1,7 @@
 from __future__ import annotations
 import json
 import re
+import sys
 import threading
 from queue import Empty, Queue
 from datetime import datetime
@@ -313,11 +314,14 @@ class ProbeCAMMainWindow(QMainWindow):
         return None
 
     def get_available_cameras(self) -> list[dict]:
-        backends = [
-            ("dshow", cv2.CAP_DSHOW),
-            ("msmf", cv2.CAP_MSMF),
-            ("any", cv2.CAP_ANY),
-        ]
+        if sys.platform.startswith("linux"):
+            backends = [("v4l2", cv2.CAP_V4L2)]
+        else:
+            backends = [
+                ("dshow", cv2.CAP_DSHOW),
+                ("msmf", cv2.CAP_MSMF),
+                ("any", cv2.CAP_ANY),
+            ]
         detected = []
         seen_ids = set()
         for index in range(0, 3):
@@ -462,6 +466,8 @@ class ProbeCAMMainWindow(QMainWindow):
                 backend_id = cv2.CAP_DSHOW
             elif backend_name == "msmf":
                 backend_id = cv2.CAP_MSMF
+            elif backend_name == "v4l2":
+                backend_id = cv2.CAP_V4L2
             self.capture = cv2.VideoCapture(index, backend_id)
             if not self.capture.isOpened():
                 self.log(f"Unable to open camera {camera_data.get('label')}")
@@ -530,7 +536,15 @@ class ProbeCAMMainWindow(QMainWindow):
             return
         if self.capture is not None:
             self.capture.release()
-        backend = cv2.CAP_DSHOW if camera_data.get("backend") == "dshow" else cv2.CAP_MSMF
+        backend_name = camera_data.get("backend")
+        if backend_name == "dshow":
+            backend = cv2.CAP_DSHOW
+        elif backend_name == "msmf":
+            backend = cv2.CAP_MSMF
+        elif backend_name == "v4l2":
+            backend = cv2.CAP_V4L2
+        else:
+            backend = cv2.CAP_ANY
         self.capture = cv2.VideoCapture(int(camera_data.get("index", 0)), backend)
         if not self.capture.isOpened():
             self.capture.release()
