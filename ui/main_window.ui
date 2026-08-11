@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
-    <height>1080</height>
+    <width>1329</width>
+    <height>1114</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +21,12 @@
   </property>
   <property name="windowTitle">
    <string>ProbeCAM CNC</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#Form {
@@ -96,9 +105,6 @@ QLabel { color: #e8e8e8; }</string>
        <property name="text">
         <string>Перегляд камери</string>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
       </widget>
      </item>
      <item>
@@ -142,181 +148,176 @@ QLabel { color: #e8e8e8; }</string>
              <property name="title">
               <string>Позиція (мм)</string>
              </property>
-             <layout class="QGridLayout" name="positionLayout">
-              <item row="0" column="1">
-               <widget class="QLabel" name="posXLabel">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                  <pointsize>16</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#ff8a8a; padding:4px 8px;</string>
-                </property>
-                <property name="text">
-                 <string>0.000</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="axisYLabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#8dff8a; font-weight:700;</string>
-                </property>
-                <property name="text">
-                 <string>Y</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QPushButton" name="zeroAllButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Обнулити все</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="posYLabel">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                  <pointsize>16</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#8dff8a; padding:4px 8px;</string>
-                </property>
-                <property name="text">
-                 <string>0.000</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="posZLabel">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                  <pointsize>16</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#8ac8ff; padding:4px 8px;</string>
-                </property>
-                <property name="text">
-                 <string>0.000</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QPushButton" name="zeroXButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Обнулити X</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="axisXLabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#ff8a8a; font-weight:700;</string>
-                </property>
-                <property name="text">
-                 <string>X</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QPushButton" name="zeroYButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Обнулити Y</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QPushButton" name="zeroZButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Обнулити Z</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="axisZLabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#8ac8ff; font-weight:700;</string>
-                </property>
-                <property name="text">
-                 <string>Z</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="axisXLabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color:#ff8a8a; font-weight:700;</string>
+                  </property>
+                  <property name="text">
+                   <string>X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="zeroXButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Обнулити X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLabel" name="posYLabel">
+                  <property name="font">
+                   <font>
+                    <family>Consolas</family>
+                    <pointsize>16</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#8dff8a; padding:4px 8px;</string>
+                  </property>
+                  <property name="text">
+                   <string>0.000</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="axisYLabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color:#8dff8a; font-weight:700;</string>
+                  </property>
+                  <property name="text">
+                   <string>Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QPushButton" name="zeroYButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Обнулити Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="posXLabel">
+                  <property name="font">
+                   <font>
+                    <family>Consolas</family>
+                    <pointsize>16</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#ff8a8a; padding:4px 8px;</string>
+                  </property>
+                  <property name="text">
+                   <string>0.000</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QPushButton" name="zeroZButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Обнулити Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="axisZLabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color:#8ac8ff; font-weight:700;</string>
+                  </property>
+                  <property name="text">
+                   <string>Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLabel" name="posZLabel">
+                  <property name="font">
+                   <font>
+                    <family>Consolas</family>
+                    <pointsize>16</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#8ac8ff; padding:4px 8px;</string>
+                  </property>
+                  <property name="text">
+                   <string>0.000</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QPushButton" name="zeroAllButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Обнулити все</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </widget>
@@ -476,9 +477,6 @@ QLabel { color: #e8e8e8; }</string>
                  <property name="text">
                   <string>Z</string>
                  </property>
-                 <property name="alignment">
-                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                 </property>
                 </widget>
                </item>
                <item>
@@ -534,22 +532,57 @@ QLabel { color: #e8e8e8; }</string>
         </item>
         <item>
          <widget class="QGroupBox" name="motionRuntimeGroup">
-          <property name="title"><string>Режим і стан GRBL</string></property>
+          <property name="title">
+           <string>Режим і стан GRBL</string>
+          </property>
           <layout class="QVBoxLayout" name="motionRuntimeLayout">
-           <item><widget class="QCheckBox" name="continuousCheck"><property name="text"><string>Безперервний рух під час утримання</string></property></widget></item>
-           <item><widget class="QCheckBox" name="runCheck"><property name="text"><string>Режим руху під час утримання</string></property></widget></item>
-           <item><widget class="QPushButton" name="resetAlarmButton"><property name="text"><string>СКИНУТИ ПОМИЛКУ</string></property><property name="styleSheet"><string notr="true">background:#b87900; color:white; font-weight:bold;</string></property></widget></item>
-           <item><widget class="QLabel" name="motionStateLabel"><property name="text"><string>GRBL: відключено</string></property><property name="wordWrap"><bool>true</bool></property><property name="styleSheet"><string notr="true">color:#ffcc66; font-weight:bold;</string></property></widget></item>
+           <item>
+            <widget class="QCheckBox" name="continuousCheck">
+             <property name="text">
+              <string>Безперервний рух під час утримання</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="runCheck">
+             <property name="text">
+              <string>Режим руху під час утримання</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="resetAlarmButton">
+             <property name="styleSheet">
+              <string notr="true">background:#b87900; color:white; font-weight:bold;</string>
+             </property>
+             <property name="text">
+              <string>СКИНУТИ ПОМИЛКУ</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="motionStateLabel">
+             <property name="styleSheet">
+              <string notr="true">color:#ffcc66; font-weight:bold;</string>
+             </property>
+             <property name="text">
+              <string>GRBL: відключено</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
         <item>
          <spacer name="motionControlSpacer">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::Policy::Expanding</enum>
+           <enum>QSizePolicy::Fixed</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -566,20 +599,32 @@ QLabel { color: #e8e8e8; }</string>
    </item>
    <item>
     <widget class="QTabWidget" name="tabWidget">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>260</height>
+       <height>306</height>
+      </size>
+     </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>2000</width>
+       <height>300</height>
       </size>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>2</number>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>false</bool>
+     </property>
+     <property name="movable">
+      <bool>false</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>false</bool>
      </property>
      <widget class="QWidget" name="overviewTab">
       <attribute name="title">
@@ -591,452 +636,954 @@ QLabel { color: #e8e8e8; }</string>
       <attribute name="title">
        <string>Камера</string>
       </attribute>
-      <layout class="QHBoxLayout" name="cameraLayout">
-       <item>
-        <layout class="QVBoxLayout" name="cameraButtonsLayout">
-         <item>
-          <widget class="QComboBox" name="cameraCombo">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>50</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>300</width>
-             <height>0</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="refreshCamerasButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>300</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Оновити список камер</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="cameraButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>300</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Запустити камеру</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="processButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>300</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Виконати аналіз</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="saveCameraSettingsButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>300</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Зберегти пресет</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="applyCameraSettingsButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>300</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Застосувати налаштування</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="cameraSettingsGroup">
-         <property name="title">
-          <string>Параметри камери</string>
-         </property>
-         <layout class="QFormLayout" name="cameraSettingsLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="labelWidth">
-            <property name="text">
-             <string>Ширина</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QSpinBox" name="widthSpinBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>160</number>
-            </property>
-            <property name="maximum">
-             <number>3840</number>
-            </property>
-            <property name="value">
-             <number>1280</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="labelHeight">
-            <property name="text">
-             <string>Висота</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QSpinBox" name="heightSpinBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>120</number>
-            </property>
-            <property name="maximum">
-             <number>2160</number>
-            </property>
-            <property name="value">
-             <number>720</number>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="labelFPS">
-            <property name="text">
-             <string>FPS</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QSpinBox" name="fpsSpinBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>60</number>
-            </property>
-            <property name="value">
-             <number>30</number>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="labelExposure">
-            <property name="text">
-             <string>Витримка</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QSpinBox" name="exposureSpinBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>-13</number>
-            </property>
-            <property name="maximum">
-             <number>10000</number>
-            </property>
-            <property name="value">
-             <number>-6</number>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="labelGain">
-            <property name="text">
-             <string>Підсилення</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QSpinBox" name="gainSpinBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>0</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="value">
-             <number>0</number>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" colspan="2">
-           <widget class="QCheckBox" name="autoExposureCheckBox">
-            <property name="text"><string>Автоматична експозиція</string></property>
-            <property name="checked"><bool>true</bool></property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QGroupBox" name="cameraSettingsGroup">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>10</y>
+         <width>211</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Параметри камери</string>
+       </property>
+       <layout class="QFormLayout" name="cameraSettingsLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelWidth">
+          <property name="text">
+           <string>Ширина</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="widthSpinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>160</number>
+          </property>
+          <property name="maximum">
+           <number>3840</number>
+          </property>
+          <property name="value">
+           <number>1280</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="labelHeight">
+          <property name="text">
+           <string>Висота</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="heightSpinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>120</number>
+          </property>
+          <property name="maximum">
+           <number>2160</number>
+          </property>
+          <property name="value">
+           <number>720</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSpinBox" name="fpsSpinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>60</number>
+          </property>
+          <property name="value">
+           <number>30</number>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="labelExposure">
+          <property name="text">
+           <string>Витримка</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QSpinBox" name="exposureSpinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-13</number>
+          </property>
+          <property name="maximum">
+           <number>10000</number>
+          </property>
+          <property name="value">
+           <number>-6</number>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="labelGain">
+          <property name="text">
+           <string>Підсилення</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QSpinBox" name="gainSpinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>0</number>
+          </property>
+          <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" colspan="2">
+         <widget class="QCheckBox" name="autoExposureCheckBox">
+          <property name="text">
+           <string>Автоматична експозиція</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>13</y>
+         <width>302</width>
+         <height>203</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QComboBox" name="cameraCombo">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>50</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="refreshCamerasButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Оновити список камер</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="cameraButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Запустити камеру</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="processButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Виконати аналіз</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="saveCameraSettingsButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Зберегти пресет</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="applyCameraSettingsButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Застосувати налаштування</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
      <widget class="QWidget" name="visionTab">
       <attribute name="title">
        <string>Технічний зір</string>
       </attribute>
-      <layout class="QVBoxLayout" name="visionLayout">
-       <item><layout class="QGridLayout" name="visionParametersLayout">
-        <item row="0" column="0"><widget class="QLabel" name="cannyLowLabel"><property name="text"><string>Нижній поріг Canny</string></property></widget></item>
-        <item row="0" column="1"><widget class="QSpinBox" name="cannyLowSpin"><property name="maximum"><number>255</number></property><property name="value"><number>60</number></property></widget></item>
-        <item row="0" column="2"><widget class="QLabel" name="cannyHighLabel"><property name="text"><string>Верхній поріг Canny</string></property></widget></item>
-        <item row="0" column="3"><widget class="QSpinBox" name="cannyHighSpin"><property name="maximum"><number>255</number></property><property name="value"><number>140</number></property></widget></item>
-        <item row="1" column="0"><widget class="QLabel" name="minAreaLabel"><property name="text"><string>Мінімальна площа контуру</string></property></widget></item>
-        <item row="1" column="1"><widget class="QSpinBox" name="minAreaSpin"><property name="maximum"><number>1000000</number></property><property name="value"><number>500</number></property></widget></item>
-        <item row="2" column="0"><widget class="QCheckBox" name="showEdgesCheck"><property name="text"><string>Показувати краї</string></property></widget></item>
-        <item row="2" column="1"><widget class="QCheckBox" name="showContoursCheck"><property name="text"><string>Показувати контури та кут</string></property><property name="checked"><bool>true</bool></property></widget></item>
-        <item row="2" column="2"><widget class="QCheckBox" name="mouseRoiCheck"><property name="text"><string>Виділяти ROI мишею</string></property></widget></item>
-        <item row="2" column="3"><widget class="QCheckBox" name="mouseLineCheck"><property name="text"><string>Малювати лінію мишею</string></property></widget></item>
-        <item row="3" column="0"><widget class="QCheckBox" name="mousePointCheck"><property name="text"><string>Додавати точки мишею</string></property></widget></item>
-        <item row="3" column="1"><widget class="QPushButton" name="fitRoiContourButton"><property name="text"><string>Знайти контур у ROI</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
-        <item row="3" column="2"><widget class="QPushButton" name="cancelSelectionButton"><property name="text"><string>Скасувати виділення</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
-       </layout></item>
-       <item>
-        <widget class="QLabel" name="visionResultLabel">
-         <property name="text">
-          <string>Аналіз зображення: очікування</string>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QGridLayout" name="visionToolsLayout">
-         <item row="0" column="0"><widget class="QPushButton" name="detectEdgesButton"><property name="text"><string>Знайти краї</string></property><property name="maximumWidth"><number>150</number></property></widget></item>
-         <item row="0" column="1"><widget class="QPushButton" name="detectContourButton"><property name="text"><string>Знайти контур і кут</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
-         <item row="1" column="0"><widget class="QPushButton" name="selectRoiButton"><property name="text"><string>Виділити ROI</string></property><property name="maximumWidth"><number>140</number></property></widget></item>
-         <item row="1" column="1"><widget class="QPushButton" name="selectLineButton"><property name="text"><string>Вибрати лінію</string></property><property name="maximumWidth"><number>150</number></property></widget></item>
-        </layout>
-       </item>
-       <item><widget class="QLabel" name="measurementTitleLabel"><property name="text"><string>Точки вимірювання, прив’язані до позиції ЧПК</string></property><property name="styleSheet"><string notr="true">font-weight:700; color:#8ac8ff;</string></property></widget></item>
-       <item><layout class="QHBoxLayout" name="measurementButtonsLayout">
-        <item><widget class="QPushButton" name="deletePointButton"><property name="text"><string>Видалити вибрані рядки</string></property><property name="maximumWidth"><number>210</number></property></widget></item>
-        <item><widget class="QPushButton" name="clearPointsButton"><property name="text"><string>Очистити таблицю</string></property><property name="maximumWidth"><number>160</number></property></widget></item>
-        <item><spacer name="measurementButtonsSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
-       </layout></item>
-       <item><widget class="QTableWidget" name="measurementPointsTable"><property name="minimumHeight"><number>200</number></property><property name="columnCount"><number>9</number></property><property name="rowCount"><number>0</number></property>
-        <column><property name="text"><string>№</string></property></column><column><property name="text"><string>Піксель X</string></property></column><column><property name="text"><string>Піксель Y</string></property></column><column><property name="text"><string>ЧПК X</string></property></column><column><property name="text"><string>ЧПК Y</string></property></column><column><property name="text"><string>ЧПК Z</string></property></column><column><property name="text"><string>Глобальний X, мм</string></property></column><column><property name="text"><string>Глобальний Y, мм</string></property></column><column><property name="text"><string>Відстань / кут</string></property></column>
-       </widget></item>
-      </layout>
+      <widget class="QLabel" name="visionResultLabel">
+       <property name="geometry">
+        <rect>
+         <x>990</x>
+         <y>10</y>
+         <width>281</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#005500;&quot;&gt;Аналіз зображення: очікування&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="measurementTitleLabel">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>10</y>
+         <width>268</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-weight:700; color:#8ac8ff;</string>
+       </property>
+       <property name="text">
+        <string>Точки вимірювання, прив’язані до позиції ЧПК</string>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="measurementPointsTable">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>128</y>
+         <width>1331</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="rowCount">
+        <number>0</number>
+       </property>
+       <property name="columnCount">
+        <number>9</number>
+       </property>
+       <column>
+        <property name="text">
+         <string>№</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Піксель X</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Піксель Y</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>ЧПК X</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>ЧПК Y</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>ЧПК Z</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Глобальний X, мм</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Глобальний Y, мм</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Відстань / кут</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QWidget" name="gridLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>10</y>
+         <width>132</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="cancelSelectionButton">
+          <property name="text">
+           <string>Скасувати виділення</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="selectRoiButton">
+          <property name="text">
+           <string>Виділити ROI</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="fitRoiContourButton">
+          <property name="text">
+           <string>Знайти контур у ROI</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>166</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QCheckBox" name="showContoursCheck">
+          <property name="text">
+           <string>Показувати контури та кут</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="mouseRoiCheck">
+          <property name="tabletTracking">
+           <bool>false</bool>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
+          <property name="text">
+           <string>Виділяти ROI мишею</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="mouseLineCheck">
+          <property name="text">
+           <string>Малювати лінію мишею</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showEdgesCheck">
+          <property name="text">
+           <string>Показувати краї</string>
+          </property>
+          <property name="tristate">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="mousePointCheck">
+          <property name="text">
+           <string>Додавати точки мишею</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>10</y>
+         <width>125</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QPushButton" name="selectLineButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Вибрати лінію</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="detectContourButton">
+          <property name="text">
+           <string>Знайти контур і кут</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="detectEdgesButton">
+          <property name="text">
+           <string>Знайти краї</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>40</y>
+         <width>273</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="measurementButtonsLayout">
+        <item>
+         <widget class="QPushButton" name="clearPointsButton">
+          <property name="text">
+           <string>Очистити таблицю</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deletePointButton">
+          <property name="text">
+           <string>Видалити вибрані рядки</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>10</y>
+         <width>233</width>
+         <height>94</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <item>
+           <widget class="QSpinBox" name="minAreaSpin">
+            <property name="maximum">
+             <number>1000000</number>
+            </property>
+            <property name="value">
+             <number>500</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="cannyLowSpin">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
+             <number>60</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="cannyHighSpin">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
+             <number>140</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <widget class="QLabel" name="cannyHighLabel">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#005500;&quot;&gt;Верхній поріг Canny&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::AutoText</enum>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="cannyLowLabel">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#005500;&quot;&gt;Нижній поріг Canny&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="Label">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#005500;&quot;&gt;налаштування&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <zorder>layoutWidget</zorder>
+      <zorder>measurementTitleLabel</zorder>
+      <zorder>measurementPointsTable</zorder>
+      <zorder>gridLayoutWidget</zorder>
+      <zorder>verticalLayoutWidget</zorder>
+      <zorder>formLayoutWidget</zorder>
+      <zorder>visionResultLabel</zorder>
+      <zorder>verticalLayoutWidget_2</zorder>
+      <zorder>formLayoutWidget</zorder>
      </widget>
      <widget class="QWidget" name="calibrationTab">
       <attribute name="title">
        <string>Калібрування</string>
       </attribute>
-      <layout class="QVBoxLayout" name="calibrationLayout">
-       <item><layout class="QGridLayout" name="calibrationParametersLayout">
-        <item row="0" column="0"><widget class="QLabel" name="boardColsLabel"><property name="text"><string>Внутрішні стовпці</string></property></widget></item>
-        <item row="0" column="1"><widget class="QSpinBox" name="boardColsSpin"><property name="minimum"><number>2</number></property><property name="maximum"><number>30</number></property><property name="value"><number>9</number></property></widget></item>
-        <item row="0" column="2"><widget class="QLabel" name="boardRowsLabel"><property name="text"><string>Внутрішні рядки</string></property></widget></item>
-        <item row="0" column="3"><widget class="QSpinBox" name="boardRowsSpin"><property name="minimum"><number>2</number></property><property name="maximum"><number>30</number></property><property name="value"><number>6</number></property></widget></item>
-        <item row="1" column="0"><widget class="QLabel" name="squareSizeLabel"><property name="text"><string>Розмір квадрата (мм)</string></property></widget></item>
-        <item row="1" column="1"><widget class="QDoubleSpinBox" name="squareSizeSpin"><property name="minimum"><double>0.100000000000000</double></property><property name="maximum"><double>1000.000000000000000</double></property><property name="value"><double>10.000000000000000</double></property></widget></item>
-        <item row="1" column="2" colspan="2"><widget class="QLabel" name="calibrationSamplesLabel"><property name="text"><string>Зразків: 0 (мінімум 3)</string></property></widget></item>
-        <item row="2" column="0" colspan="2"><widget class="QCheckBox" name="fisheyeCalibrationCheck"><property name="text"><string>Модель калібрування «риб’яче око»</string></property></widget></item>
-        <item row="2" column="2" colspan="2"><widget class="QCheckBox" name="applyUndistortCheck"><property name="text"><string>Застосовувати корекцію дисторсії</string></property><property name="checked"><bool>true</bool></property></widget></item>
-        <item row="3" column="0"><widget class="QLabel" name="referenceLengthLabel"><property name="text"><string>Реальна довжина лінії (мм)</string></property></widget></item>
-        <item row="3" column="1"><widget class="QDoubleSpinBox" name="referenceLengthSpin"><property name="minimum"><double>0.001000000000000</double></property><property name="maximum"><double>100000.000000000000000</double></property><property name="decimals"><number>3</number></property><property name="value"><double>100.000000000000000</double></property></widget></item>
-       </layout></item>
-       <item>
-        <widget class="QLabel" name="calibrationInfoLabel">
-         <property name="text">
-          <string>Калібрування об’єктива: укажіть параметри шахівниці, захопіть 8–15 зразків у різних положеннях і розрахуйте калібрування камери.
-Калібрування масштабу: покладіть лінійку в площині деталі, намалюйте по ній еталонну лінію у вкладці «Технічний зір», введіть її реальну довжину нижче та розрахуйте піксель/мм.
-Збережене калібрування автоматично завантажується для вибраної камери.</string>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item><widget class="QLabel" name="calibrationCaptureTitle"><property name="text"><string>Захоплення та розрахунок</string></property><property name="styleSheet"><string notr="true">font-weight:700; color:#8ac8ff;</string></property></widget></item>
-       <item>
-        <layout class="QGridLayout" name="calibrationToolsLayout">
-         <item row="0" column="0"><widget class="QPushButton" name="checkerboardButton"><property name="text"><string>Захопити шахівницю</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
-         <item row="0" column="1"><widget class="QPushButton" name="charucoButton"><property name="text"><string>Захопити Charuco</string></property><property name="maximumWidth"><number>170</number></property></widget></item>
-         <item row="1" column="0"><widget class="QPushButton" name="pixelMmButton"><property name="text"><string>Розрахувати піксель/мм</string></property><property name="maximumWidth"><number>210</number></property></widget></item>
-         <item row="1" column="1"><widget class="QPushButton" name="saveCalibrationButton"><property name="text"><string>Зберегти калібрування</string></property><property name="maximumWidth"><number>200</number></property></widget></item>
-         <item row="2" column="0"><widget class="QPushButton" name="calibrateCameraButton"><property name="text"><string>Розрахувати калібрування камери</string></property><property name="maximumWidth"><number>270</number></property></widget></item>
-         <item row="2" column="1"><widget class="QPushButton" name="loadCalibrationButton"><property name="text"><string>Завантажити калібрування</string></property><property name="maximumWidth"><number>220</number></property></widget></item>
-        </layout>
-       </item>
-      </layout>
+      <widget class="QLabel" name="calibrationCaptureTitle">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>159</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-weight:700; color:#8ac8ff;</string>
+       </property>
+       <property name="text">
+        <string>Захоплення та розрахунок</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>60</y>
+         <width>370</width>
+         <height>103</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QPushButton" name="checkerboardButton">
+            <property name="text">
+             <string>Захопити шахівницю</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pixelMmButton">
+            <property name="text">
+             <string>Розрахувати піксель/мм</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="calibrateCameraButton">
+            <property name="text">
+             <string>Розрахувати калібрування камери</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <widget class="QPushButton" name="charucoButton">
+            <property name="text">
+             <string>Захопити Charuco</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="saveCalibrationButton">
+            <property name="text">
+             <string>Зберегти калібрування</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="loadCalibrationButton">
+            <property name="text">
+             <string>Завантажити калібрування</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QSplitter" name="splitter_4">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>110</y>
+         <width>207</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QCheckBox" name="fisheyeCalibrationCheck">
+        <property name="text">
+         <string>Модель калібрування «риб’яче око»</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="applyUndistortCheck">
+        <property name="text">
+         <string>Застосовувати корекцію дисторсії</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitter_5">
+       <property name="geometry">
+        <rect>
+         <x>970</x>
+         <y>12</y>
+         <width>51</width>
+         <height>62</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QSpinBox" name="boardColsSpin">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="minimum">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <number>30</number>
+        </property>
+        <property name="value">
+         <number>9</number>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="boardRowsSpin">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="minimum">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <number>30</number>
+        </property>
+        <property name="value">
+         <number>6</number>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitter_6">
+       <property name="geometry">
+        <rect>
+         <x>850</x>
+         <y>20</y>
+         <width>100</width>
+         <height>46</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QDoubleSpinBox" name="referenceLengthSpin">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>100000.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>100.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="squareSizeSpin">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="minimum">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>10.000000000000000</double>
+        </property>
+       </widget>
+      </widget>
      </widget>
      <widget class="QWidget" name="settingsTab">
       <attribute name="title">
        <string>Налаштування</string>
       </attribute>
-      <layout class="QVBoxLayout" name="settingsLayout">
-       <item>
-        <widget class="QGroupBox" name="connectionGroup">
-         <property name="title">
-          <string>Підключення</string>
-         </property>
-         <layout class="QHBoxLayout" name="connectionLayout">
-          <item>
-           <widget class="QComboBox" name="portCombo">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="contextMenuPolicy">
-             <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="motionButton">
-            <property name="text">
-             <string>Підключити</string>
-            </property>
-            <property name="shortcut">
-             <string notr="true"/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="settingsLabel">
-         <property name="text">
-          <string>Профілі та налаштування зберігаються у форматі JSON у папці data.</string>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="saveProfileButton">
-         <property name="text">
-          <string>Зберегти профіль</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="loadProfileButton">
-         <property name="text">
-          <string>Завантажити профіль</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QGroupBox" name="connectionGroup">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>141</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Підключення</string>
+       </property>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>11</x>
+          <y>31</y>
+          <width>121</width>
+          <height>68</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QComboBox" name="portCombo">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="contextMenuPolicy">
+            <enum>Qt::NoContextMenu</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="motionButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Підключити</string>
+           </property>
+           <property name="shortcut">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitter">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>40</y>
+         <width>133</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QPushButton" name="saveProfileButton">
+        <property name="text">
+         <string>Зберегти профіль</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="loadProfileButton">
+        <property name="text">
+         <string>Завантажити профіль</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
    </item>
