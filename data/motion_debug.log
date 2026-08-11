@@ -6786,3 +6786,7 @@
 [17:39:19.475] Camera started: Camera 0 (v4l2)
 [17:41:10.927] Saved profile to /home/uzfm/ProbeCAM-CNC/data/probe_cam_profile.json
 [17:41:10.929] Failed to read camera frame
+[18:11:37.058] Detected cameras: ['Camera 0 (v4l2)']
+[18:11:37.064] Detected serial ports: ['/dev/ttyACM0']
+[18:11:37.065] Loaded profile from /home/uzfm/ProbeCAM-CNC/data/probe_cam_profile.json
+[18:11:37.066] Application initialized. Load a profile or start scanning cameras.

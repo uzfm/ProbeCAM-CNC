@@ -4,7 +4,7 @@
     {
       "label": "run-probecam-python",
       "type": "shell",
-      "command": "C:\\Program Files\\Python39\\python.exe",
+      "command": "python3",
       "args": [
         "main.py"
       ],
