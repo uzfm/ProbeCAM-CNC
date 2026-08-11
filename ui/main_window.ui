@@ -94,7 +94,7 @@ QLabel { color: #e8e8e8; }</string>
         <string notr="true">border:1px solid #3a3f4b; border-radius:6px; background:#0d0f12; color:#6b7280; font-size:12pt;</string>
        </property>
        <property name="text">
-        <string>Camera preview</string>
+        <string>Перегляд камери</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -122,7 +122,7 @@ QLabel { color: #e8e8e8; }</string>
         </size>
        </property>
        <property name="title">
-        <string>Motor control</string>
+        <string>Керування верстатом</string>
        </property>
        <layout class="QVBoxLayout" name="motionControlLayout">
         <item>
@@ -134,13 +134,13 @@ QLabel { color: #e8e8e8; }</string>
            </sizepolicy>
           </property>
           <property name="title">
-           <string>Jog</string>
+           <string>Ручне переміщення</string>
           </property>
           <layout class="QVBoxLayout" name="jogGroupLayout">
            <item>
             <widget class="QGroupBox" name="positionGroup">
              <property name="title">
-              <string>Position (mm)</string>
+              <string>Позиція (мм)</string>
              </property>
              <layout class="QGridLayout" name="positionLayout">
               <item row="0" column="1">
@@ -194,7 +194,7 @@ QLabel { color: #e8e8e8; }</string>
                  </size>
                 </property>
                 <property name="text">
-                 <string>Zero all</string>
+                 <string>Обнулити все</string>
                 </property>
                </widget>
               </item>
@@ -253,7 +253,7 @@ QLabel { color: #e8e8e8; }</string>
                  </size>
                 </property>
                 <property name="text">
-                 <string>Zero X</string>
+                 <string>Обнулити X</string>
                 </property>
                </widget>
               </item>
@@ -282,7 +282,7 @@ QLabel { color: #e8e8e8; }</string>
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>Zero Y</string>
+                 <string>Обнулити Y</string>
                 </property>
                </widget>
               </item>
@@ -295,7 +295,7 @@ QLabel { color: #e8e8e8; }</string>
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>Zero Z</string>
+                 <string>Обнулити Z</string>
                 </property>
                </widget>
               </item>
@@ -326,7 +326,7 @@ QLabel { color: #e8e8e8; }</string>
              <item>
               <widget class="QLabel" name="stepLabel">
                <property name="text">
-                <string>Step</string>
+                <string>Крок</string>
                </property>
               </widget>
              </item>
@@ -357,7 +357,7 @@ QLabel { color: #e8e8e8; }</string>
              <item>
               <widget class="QLabel" name="feedLabel">
                <property name="text">
-                <string>Feed %</string>
+                <string>Швидкість (мм/хв)</string>
                </property>
               </widget>
              </item>
@@ -367,10 +367,10 @@ QLabel { color: #e8e8e8; }</string>
                 <number>1</number>
                </property>
                <property name="maximum">
-                <number>100</number>
+                <number>2000</number>
                </property>
                <property name="value">
-                <number>100</number>
+                <number>600</number>
                </property>
               </widget>
              </item>
@@ -510,7 +510,7 @@ QLabel { color: #e8e8e8; }</string>
            </sizepolicy>
           </property>
           <property name="title">
-           <string>Quick actions</string>
+           <string>Швидкі дії</string>
           </property>
           <layout class="QGridLayout" name="quickActionsLayout">
            <item row="2" column="0" colspan="2">
@@ -525,10 +525,21 @@ QLabel { color: #e8e8e8; }</string>
               <string notr="true">background:#8a1f1f; border:1px solid #c0392b; color:#ffffff; font-weight:700; font-size:11pt;</string>
              </property>
              <property name="text">
-              <string>⏹  STOP</string>
+              <string>⏹  АВАРІЙНА ЗУПИНКА</string>
              </property>
             </widget>
            </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="motionRuntimeGroup">
+          <property name="title"><string>Режим і стан GRBL</string></property>
+          <layout class="QVBoxLayout" name="motionRuntimeLayout">
+           <item><widget class="QCheckBox" name="continuousCheck"><property name="text"><string>Безперервний рух під час утримання</string></property></widget></item>
+           <item><widget class="QCheckBox" name="runCheck"><property name="text"><string>Режим руху під час утримання</string></property></widget></item>
+           <item><widget class="QPushButton" name="resetAlarmButton"><property name="text"><string>СКИНУТИ ПОМИЛКУ</string></property><property name="styleSheet"><string notr="true">background:#b87900; color:white; font-weight:bold;</string></property></widget></item>
+           <item><widget class="QLabel" name="motionStateLabel"><property name="text"><string>GRBL: відключено</string></property><property name="wordWrap"><bool>true</bool></property><property name="styleSheet"><string notr="true">color:#ffcc66; font-weight:bold;</string></property></widget></item>
           </layout>
          </widget>
         </item>
@@ -572,13 +583,13 @@ QLabel { color: #e8e8e8; }</string>
      </property>
      <widget class="QWidget" name="overviewTab">
       <attribute name="title">
-       <string>Overview</string>
+       <string>Огляд</string>
       </attribute>
       <layout class="QVBoxLayout" name="overviewLayout"/>
      </widget>
      <widget class="QWidget" name="cameraTab">
       <attribute name="title">
-       <string>Camera</string>
+       <string>Камера</string>
       </attribute>
       <layout class="QHBoxLayout" name="cameraLayout">
        <item>
@@ -614,7 +625,7 @@ QLabel { color: #e8e8e8; }</string>
             </size>
            </property>
            <property name="text">
-            <string>Refresh cameras</string>
+            <string>Оновити список камер</string>
            </property>
           </widget>
          </item>
@@ -633,7 +644,7 @@ QLabel { color: #e8e8e8; }</string>
             </size>
            </property>
            <property name="text">
-            <string>Start camera</string>
+            <string>Запустити камеру</string>
            </property>
           </widget>
          </item>
@@ -652,7 +663,7 @@ QLabel { color: #e8e8e8; }</string>
             </size>
            </property>
            <property name="text">
-            <string>Apply vision pass</string>
+            <string>Виконати аналіз</string>
            </property>
           </widget>
          </item>
@@ -671,7 +682,7 @@ QLabel { color: #e8e8e8; }</string>
             </size>
            </property>
            <property name="text">
-            <string>Save preset</string>
+            <string>Зберегти пресет</string>
            </property>
           </widget>
          </item>
@@ -690,7 +701,7 @@ QLabel { color: #e8e8e8; }</string>
             </size>
            </property>
            <property name="text">
-            <string>Apply settings</string>
+            <string>Застосувати налаштування</string>
            </property>
           </widget>
          </item>
@@ -699,13 +710,13 @@ QLabel { color: #e8e8e8; }</string>
        <item>
         <widget class="QGroupBox" name="cameraSettingsGroup">
          <property name="title">
-          <string>Camera preset</string>
+          <string>Параметри камери</string>
          </property>
          <layout class="QFormLayout" name="cameraSettingsLayout">
           <item row="0" column="0">
            <widget class="QLabel" name="labelWidth">
             <property name="text">
-             <string>Width</string>
+             <string>Ширина</string>
             </property>
            </widget>
           </item>
@@ -737,7 +748,7 @@ QLabel { color: #e8e8e8; }</string>
           <item row="1" column="0">
            <widget class="QLabel" name="labelHeight">
             <property name="text">
-             <string>Height</string>
+             <string>Висота</string>
             </property>
            </widget>
           </item>
@@ -801,7 +812,7 @@ QLabel { color: #e8e8e8; }</string>
           <item row="3" column="0">
            <widget class="QLabel" name="labelExposure">
             <property name="text">
-             <string>Exposure</string>
+             <string>Витримка</string>
             </property>
            </widget>
           </item>
@@ -833,7 +844,7 @@ QLabel { color: #e8e8e8; }</string>
           <item row="4" column="0">
            <widget class="QLabel" name="labelGain">
             <property name="text">
-             <string>Gain</string>
+             <string>Підсилення</string>
             </property>
            </widget>
           </item>
@@ -862,6 +873,12 @@ QLabel { color: #e8e8e8; }</string>
             </property>
            </widget>
           </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QCheckBox" name="autoExposureCheckBox">
+            <property name="text"><string>Автоматична експозиція</string></property>
+            <property name="checked"><bool>true</bool></property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -869,47 +886,105 @@ QLabel { color: #e8e8e8; }</string>
      </widget>
      <widget class="QWidget" name="visionTab">
       <attribute name="title">
-       <string>Vision</string>
+       <string>Технічний зір</string>
       </attribute>
       <layout class="QVBoxLayout" name="visionLayout">
+       <item><layout class="QGridLayout" name="visionParametersLayout">
+        <item row="0" column="0"><widget class="QLabel" name="cannyLowLabel"><property name="text"><string>Нижній поріг Canny</string></property></widget></item>
+        <item row="0" column="1"><widget class="QSpinBox" name="cannyLowSpin"><property name="maximum"><number>255</number></property><property name="value"><number>60</number></property></widget></item>
+        <item row="0" column="2"><widget class="QLabel" name="cannyHighLabel"><property name="text"><string>Верхній поріг Canny</string></property></widget></item>
+        <item row="0" column="3"><widget class="QSpinBox" name="cannyHighSpin"><property name="maximum"><number>255</number></property><property name="value"><number>140</number></property></widget></item>
+        <item row="1" column="0"><widget class="QLabel" name="minAreaLabel"><property name="text"><string>Мінімальна площа контуру</string></property></widget></item>
+        <item row="1" column="1"><widget class="QSpinBox" name="minAreaSpin"><property name="maximum"><number>1000000</number></property><property name="value"><number>500</number></property></widget></item>
+        <item row="2" column="0"><widget class="QCheckBox" name="showEdgesCheck"><property name="text"><string>Показувати краї</string></property></widget></item>
+        <item row="2" column="1"><widget class="QCheckBox" name="showContoursCheck"><property name="text"><string>Показувати контури та кут</string></property><property name="checked"><bool>true</bool></property></widget></item>
+        <item row="2" column="2"><widget class="QCheckBox" name="mouseRoiCheck"><property name="text"><string>Виділяти ROI мишею</string></property></widget></item>
+        <item row="2" column="3"><widget class="QCheckBox" name="mouseLineCheck"><property name="text"><string>Малювати лінію мишею</string></property></widget></item>
+        <item row="3" column="0"><widget class="QCheckBox" name="mousePointCheck"><property name="text"><string>Додавати точки мишею</string></property></widget></item>
+        <item row="3" column="1"><widget class="QPushButton" name="fitRoiContourButton"><property name="text"><string>Знайти контур у ROI</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
+        <item row="3" column="2"><widget class="QPushButton" name="cancelSelectionButton"><property name="text"><string>Скасувати виділення</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
+       </layout></item>
        <item>
         <widget class="QLabel" name="visionResultLabel">
          <property name="text">
-          <string>Vision pipeline: idle</string>
+          <string>Аналіз зображення: очікування</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
          </property>
         </widget>
        </item>
+       <item>
+        <layout class="QGridLayout" name="visionToolsLayout">
+         <item row="0" column="0"><widget class="QPushButton" name="detectEdgesButton"><property name="text"><string>Знайти краї</string></property><property name="maximumWidth"><number>150</number></property></widget></item>
+         <item row="0" column="1"><widget class="QPushButton" name="detectContourButton"><property name="text"><string>Знайти контур і кут</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
+         <item row="1" column="0"><widget class="QPushButton" name="selectRoiButton"><property name="text"><string>Виділити ROI</string></property><property name="maximumWidth"><number>140</number></property></widget></item>
+         <item row="1" column="1"><widget class="QPushButton" name="selectLineButton"><property name="text"><string>Вибрати лінію</string></property><property name="maximumWidth"><number>150</number></property></widget></item>
+        </layout>
+       </item>
+       <item><widget class="QLabel" name="measurementTitleLabel"><property name="text"><string>Точки вимірювання, прив’язані до позиції ЧПК</string></property><property name="styleSheet"><string notr="true">font-weight:700; color:#8ac8ff;</string></property></widget></item>
+       <item><layout class="QHBoxLayout" name="measurementButtonsLayout">
+        <item><widget class="QPushButton" name="deletePointButton"><property name="text"><string>Видалити вибрані рядки</string></property><property name="maximumWidth"><number>210</number></property></widget></item>
+        <item><widget class="QPushButton" name="clearPointsButton"><property name="text"><string>Очистити таблицю</string></property><property name="maximumWidth"><number>160</number></property></widget></item>
+        <item><spacer name="measurementButtonsSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+       </layout></item>
+       <item><widget class="QTableWidget" name="measurementPointsTable"><property name="minimumHeight"><number>200</number></property><property name="columnCount"><number>9</number></property><property name="rowCount"><number>0</number></property>
+        <column><property name="text"><string>№</string></property></column><column><property name="text"><string>Піксель X</string></property></column><column><property name="text"><string>Піксель Y</string></property></column><column><property name="text"><string>ЧПК X</string></property></column><column><property name="text"><string>ЧПК Y</string></property></column><column><property name="text"><string>ЧПК Z</string></property></column><column><property name="text"><string>Глобальний X, мм</string></property></column><column><property name="text"><string>Глобальний Y, мм</string></property></column><column><property name="text"><string>Відстань / кут</string></property></column>
+       </widget></item>
       </layout>
      </widget>
      <widget class="QWidget" name="calibrationTab">
       <attribute name="title">
-       <string>Calibration</string>
+       <string>Калібрування</string>
       </attribute>
       <layout class="QVBoxLayout" name="calibrationLayout">
+       <item><layout class="QGridLayout" name="calibrationParametersLayout">
+        <item row="0" column="0"><widget class="QLabel" name="boardColsLabel"><property name="text"><string>Внутрішні стовпці</string></property></widget></item>
+        <item row="0" column="1"><widget class="QSpinBox" name="boardColsSpin"><property name="minimum"><number>2</number></property><property name="maximum"><number>30</number></property><property name="value"><number>9</number></property></widget></item>
+        <item row="0" column="2"><widget class="QLabel" name="boardRowsLabel"><property name="text"><string>Внутрішні рядки</string></property></widget></item>
+        <item row="0" column="3"><widget class="QSpinBox" name="boardRowsSpin"><property name="minimum"><number>2</number></property><property name="maximum"><number>30</number></property><property name="value"><number>6</number></property></widget></item>
+        <item row="1" column="0"><widget class="QLabel" name="squareSizeLabel"><property name="text"><string>Розмір квадрата (мм)</string></property></widget></item>
+        <item row="1" column="1"><widget class="QDoubleSpinBox" name="squareSizeSpin"><property name="minimum"><double>0.100000000000000</double></property><property name="maximum"><double>1000.000000000000000</double></property><property name="value"><double>10.000000000000000</double></property></widget></item>
+        <item row="1" column="2" colspan="2"><widget class="QLabel" name="calibrationSamplesLabel"><property name="text"><string>Зразків: 0 (мінімум 3)</string></property></widget></item>
+        <item row="2" column="0" colspan="2"><widget class="QCheckBox" name="fisheyeCalibrationCheck"><property name="text"><string>Модель калібрування «риб’яче око»</string></property></widget></item>
+        <item row="2" column="2" colspan="2"><widget class="QCheckBox" name="applyUndistortCheck"><property name="text"><string>Застосовувати корекцію дисторсії</string></property><property name="checked"><bool>true</bool></property></widget></item>
+        <item row="3" column="0"><widget class="QLabel" name="referenceLengthLabel"><property name="text"><string>Реальна довжина лінії (мм)</string></property></widget></item>
+        <item row="3" column="1"><widget class="QDoubleSpinBox" name="referenceLengthSpin"><property name="minimum"><double>0.001000000000000</double></property><property name="maximum"><double>100000.000000000000000</double></property><property name="decimals"><number>3</number></property><property name="value"><double>100.000000000000000</double></property></widget></item>
+       </layout></item>
        <item>
         <widget class="QLabel" name="calibrationInfoLabel">
          <property name="text">
-          <string>Calibration workflow: use checkerboard or Charuco, then save the result profile.</string>
+          <string>Калібрування об’єктива: укажіть параметри шахівниці, захопіть 8–15 зразків у різних положеннях і розрахуйте калібрування камери.
+Калібрування масштабу: покладіть лінійку в площині деталі, намалюйте по ній еталонну лінію у вкладці «Технічний зір», введіть її реальну довжину нижче та розрахуйте піксель/мм.
+Збережене калібрування автоматично завантажується для вибраної камери.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+       <item><widget class="QLabel" name="calibrationCaptureTitle"><property name="text"><string>Захоплення та розрахунок</string></property><property name="styleSheet"><string notr="true">font-weight:700; color:#8ac8ff;</string></property></widget></item>
+       <item>
+        <layout class="QGridLayout" name="calibrationToolsLayout">
+         <item row="0" column="0"><widget class="QPushButton" name="checkerboardButton"><property name="text"><string>Захопити шахівницю</string></property><property name="maximumWidth"><number>190</number></property></widget></item>
+         <item row="0" column="1"><widget class="QPushButton" name="charucoButton"><property name="text"><string>Захопити Charuco</string></property><property name="maximumWidth"><number>170</number></property></widget></item>
+         <item row="1" column="0"><widget class="QPushButton" name="pixelMmButton"><property name="text"><string>Розрахувати піксель/мм</string></property><property name="maximumWidth"><number>210</number></property></widget></item>
+         <item row="1" column="1"><widget class="QPushButton" name="saveCalibrationButton"><property name="text"><string>Зберегти калібрування</string></property><property name="maximumWidth"><number>200</number></property></widget></item>
+         <item row="2" column="0"><widget class="QPushButton" name="calibrateCameraButton"><property name="text"><string>Розрахувати калібрування камери</string></property><property name="maximumWidth"><number>270</number></property></widget></item>
+         <item row="2" column="1"><widget class="QPushButton" name="loadCalibrationButton"><property name="text"><string>Завантажити калібрування</string></property><property name="maximumWidth"><number>220</number></property></widget></item>
+        </layout>
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="settingsTab">
       <attribute name="title">
-       <string>Settings</string>
+       <string>Налаштування</string>
       </attribute>
       <layout class="QVBoxLayout" name="settingsLayout">
        <item>
         <widget class="QGroupBox" name="connectionGroup">
          <property name="title">
-          <string>Connection</string>
+          <string>Підключення</string>
          </property>
          <layout class="QHBoxLayout" name="connectionLayout">
           <item>
@@ -927,7 +1002,7 @@ QLabel { color: #e8e8e8; }</string>
           <item>
            <widget class="QPushButton" name="motionButton">
             <property name="text">
-             <string>Connect</string>
+             <string>Підключити</string>
             </property>
             <property name="shortcut">
              <string notr="true"/>
@@ -940,7 +1015,7 @@ QLabel { color: #e8e8e8; }</string>
        <item>
         <widget class="QLabel" name="settingsLabel">
          <property name="text">
-          <string>Profiles and settings are saved as JSON in the data/ folder.</string>
+          <string>Профілі та налаштування зберігаються у форматі JSON у папці data.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -950,14 +1025,14 @@ QLabel { color: #e8e8e8; }</string>
        <item>
         <widget class="QPushButton" name="saveProfileButton">
          <property name="text">
-          <string>Save profile</string>
+          <string>Зберегти профіль</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="loadProfileButton">
          <property name="text">
-          <string>Load profile</string>
+          <string>Завантажити профіль</string>
          </property>
         </widget>
        </item>
@@ -968,7 +1043,7 @@ QLabel { color: #e8e8e8; }</string>
    <item>
     <widget class="QLabel" name="cameraInfoLabel">
      <property name="text">
-      <string>Camera discovery uses DirectShow/Windows UVC backends first</string>
+      <string>Пошук камер насамперед використовує DirectShow та Windows UVC</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -980,7 +1055,7 @@ QLabel { color: #e8e8e8; }</string>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>140</height>
+       <height>90</height>
       </size>
      </property>
      <property name="readOnly">

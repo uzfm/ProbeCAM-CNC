@@ -10,5 +10,18 @@
       "exposure": -6,
       "gain": 100
     }
+  },
+  "dshow:0": {
+    "label": "Camera 0 (dshow)",
+    "index": 0,
+    "backend": "dshow",
+    "settings": {
+      "width": 640,
+      "height": 480,
+      "fps": 30,
+      "exposure": -5,
+      "gain": 52,
+      "auto_exposure": true
+    }
   }
 }

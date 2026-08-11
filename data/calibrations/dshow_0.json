@@ -1,0 +1,17 @@
+{
+  "camera_id": "dshow:0",
+  "roi": [
+    337,
+    309,
+    85,
+    69
+  ],
+  "manual_line": [
+    593,
+    477,
+    593,
+    476
+  ],
+  "measurement_points": [],
+  "pixel_per_mm": 8.43087100982666
+}
