@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>ProbeCAM CNC</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#Form {
+  background-color: #1b1e23;
+  color: #e8e8e8;
+  font-family: &quot;Segoe UI&quot;, sans-serif;
+  font-size: 10pt;
+}
+QGroupBox {
+  border: 1px solid #3a3f4b;
+  border-radius: 6px;
+  margin-top: 14px;
+  padding-top: 6px;
+  font-weight: 600;
+  color: #9fd3ff;
+}
+QGroupBox::title {
+  subcontrol-origin: margin;
+  left: 10px;
+  padding: 0 4px;
+}
+QPushButton {
+  background-color: #2c313c;
+  border: 1px solid #454b58;
+  border-radius: 4px;
+  padding: 7px 10px;
+  color: #e8e8e8;
+}
+QPushButton:hover { background-color: #394050; }
+QPushButton:pressed { background-color: #1f242c; }
+QTabWidget::pane { border: 1px solid #3a3f4b; top: -1px; }
+QTabBar::tab {
+  background: #23262d;
+  padding: 8px 18px;
+  border: 1px solid #3a3f4b;
+  border-bottom: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+QTabBar::tab:selected { background: #2c313c; color: #9fd3ff; }
+QComboBox, QSpinBox {
+  background: #20242b;
+  border: 1px solid #454b58;
+  border-radius: 4px;
+  padding: 4px;
+  color: #e8e8e8;
+}
+QPlainTextEdit {
+  background: #101216;
+  color: #8fd18f;
+  font-family: &quot;Consolas&quot;, &quot;Courier New&quot;, monospace;
+  border: 1px solid #3a3f4b;
+}
+QLabel { color: #e8e8e8; }</string>
+  </property>
+  <layout class="QVBoxLayout" name="rootLayout">
+   <item>
+    <layout class="QHBoxLayout" name="topAreaLayout">
+     <item>
+      <widget class="QLabel" name="previewLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>640</width>
+         <height>480</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:1px solid #3a3f4b; border-radius:6px; background:#0d0f12; color:#6b7280; font-size:12pt;</string>
+       </property>
+       <property name="text">
+        <string>Camera preview</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="motionControlGroup">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>340</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Motor control</string>
+       </property>
+       <layout class="QVBoxLayout" name="motionControlLayout">
+        <item>
+         <widget class="QGroupBox" name="jogGroup">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Jog</string>
+          </property>
+          <layout class="QVBoxLayout" name="jogGroupLayout">
+           <item>
+            <widget class="QGroupBox" name="positionGroup">
+             <property name="title">
+              <string>Position (mm)</string>
+             </property>
+             <layout class="QGridLayout" name="positionLayout">
+              <item row="0" column="1">
+               <widget class="QLabel" name="posXLabel">
+                <property name="font">
+                 <font>
+                  <family>Consolas</family>
+                  <pointsize>16</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#ff8a8a; padding:4px 8px;</string>
+                </property>
+                <property name="text">
+                 <string>0.000</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="axisYLabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color:#8dff8a; font-weight:700;</string>
+                </property>
+                <property name="text">
+                 <string>Y</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QPushButton" name="zeroAllButton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Zero all</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="posYLabel">
+                <property name="font">
+                 <font>
+                  <family>Consolas</family>
+                  <pointsize>16</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#8dff8a; padding:4px 8px;</string>
+                </property>
+                <property name="text">
+                 <string>0.000</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="posZLabel">
+                <property name="font">
+                 <font>
+                  <family>Consolas</family>
+                  <pointsize>16</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background:#0d0f12; border:1px solid #3a3f4b; border-radius:4px; color:#8ac8ff; padding:4px 8px;</string>
+                </property>
+                <property name="text">
+                 <string>0.000</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QPushButton" name="zeroXButton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Zero X</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="axisXLabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color:#ff8a8a; font-weight:700;</string>
+                </property>
+                <property name="text">
+                 <string>X</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QPushButton" name="zeroYButton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Zero Y</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QPushButton" name="zeroZButton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Zero Z</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="axisZLabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color:#8ac8ff; font-weight:700;</string>
+                </property>
+                <property name="text">
+                 <string>Z</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="stepRowLayout">
+             <item>
+              <widget class="QLabel" name="stepLabel">
+               <property name="text">
+                <string>Step</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="stepSizeCombo">
+               <item>
+                <property name="text">
+                 <string>0.01 mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>0.1 mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>1 mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>10 mm</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="feedLabel">
+               <property name="text">
+                <string>Feed %</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="feedRateSpinBox">
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="value">
+                <number>100</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="jogPadRowLayout">
+             <item>
+              <layout class="QGridLayout" name="xyPadLayout">
+               <item row="0" column="1">
+                <widget class="QPushButton" name="jogYPlusButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>56</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Y+</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QPushButton" name="jogYMinusButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>56</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Y-</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QPushButton" name="jogPlusButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>56</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>X+</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QPushButton" name="jogMinusButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>56</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>X-</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QPushButton" name="homeButton">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background:#2f3a4d; border:1px solid #4a6fa5; font-weight:700;</string>
+                 </property>
+                 <property name="text">
+                  <string>⌂</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="zPadLayout">
+               <item>
+                <widget class="QPushButton" name="jogZPlusButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>56</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Z+</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="zPadLabel">
+                 <property name="text">
+                  <string>Z</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="jogZMinusButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>56</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Z-</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="quickActionsGroup">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Quick actions</string>
+          </property>
+          <layout class="QGridLayout" name="quickActionsLayout">
+           <item row="2" column="0" colspan="2">
+            <widget class="QPushButton" name="stopButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>44</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background:#8a1f1f; border:1px solid #c0392b; color:#ffffff; font-weight:700; font-size:11pt;</string>
+             </property>
+             <property name="text">
+              <string>⏹  STOP</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="motionControlSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Policy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>260</height>
+      </size>
+     </property>
+     <property name="currentIndex">
+      <number>4</number>
+     </property>
+     <widget class="QWidget" name="overviewTab">
+      <attribute name="title">
+       <string>Overview</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="overviewLayout"/>
+     </widget>
+     <widget class="QWidget" name="cameraTab">
+      <attribute name="title">
+       <string>Camera</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="cameraLayout">
+       <item>
+        <layout class="QVBoxLayout" name="cameraButtonsLayout">
+         <item>
+          <widget class="QComboBox" name="cameraCombo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>50</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="refreshCamerasButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Refresh cameras</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="cameraButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Start camera</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="processButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Apply vision pass</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveCameraSettingsButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Save preset</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="applyCameraSettingsButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Apply settings</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="cameraSettingsGroup">
+         <property name="title">
+          <string>Camera preset</string>
+         </property>
+         <layout class="QFormLayout" name="cameraSettingsLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelWidth">
+            <property name="text">
+             <string>Width</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="widthSpinBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>160</number>
+            </property>
+            <property name="maximum">
+             <number>3840</number>
+            </property>
+            <property name="value">
+             <number>1280</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelHeight">
+            <property name="text">
+             <string>Height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="heightSpinBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>120</number>
+            </property>
+            <property name="maximum">
+             <number>2160</number>
+            </property>
+            <property name="value">
+             <number>720</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelFPS">
+            <property name="text">
+             <string>FPS</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QSpinBox" name="fpsSpinBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>60</number>
+            </property>
+            <property name="value">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelExposure">
+            <property name="text">
+             <string>Exposure</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="exposureSpinBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>-13</number>
+            </property>
+            <property name="maximum">
+             <number>10000</number>
+            </property>
+            <property name="value">
+             <number>-6</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelGain">
+            <property name="text">
+             <string>Gain</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSpinBox" name="gainSpinBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="visionTab">
+      <attribute name="title">
+       <string>Vision</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="visionLayout">
+       <item>
+        <widget class="QLabel" name="visionResultLabel">
+         <property name="text">
+          <string>Vision pipeline: idle</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="calibrationTab">
+      <attribute name="title">
+       <string>Calibration</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="calibrationLayout">
+       <item>
+        <widget class="QLabel" name="calibrationInfoLabel">
+         <property name="text">
+          <string>Calibration workflow: use checkerboard or Charuco, then save the result profile.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="settingsTab">
+      <attribute name="title">
+       <string>Settings</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="settingsLayout">
+       <item>
+        <widget class="QGroupBox" name="connectionGroup">
+         <property name="title">
+          <string>Connection</string>
+         </property>
+         <layout class="QHBoxLayout" name="connectionLayout">
+          <item>
+           <widget class="QComboBox" name="portCombo">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="contextMenuPolicy">
+             <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="motionButton">
+            <property name="text">
+             <string>Connect</string>
+            </property>
+            <property name="shortcut">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="settingsLabel">
+         <property name="text">
+          <string>Profiles and settings are saved as JSON in the data/ folder.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="saveProfileButton">
+         <property name="text">
+          <string>Save profile</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="loadProfileButton">
+         <property name="text">
+          <string>Load profile</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="cameraInfoLabel">
+     <property name="text">
+      <string>Camera discovery uses DirectShow/Windows UVC backends first</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="eventLog">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>140</height>
+      </size>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

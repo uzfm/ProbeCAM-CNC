@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug ProbeCAMCNC (Python)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "C:\\Program Files\\Python311\\python.exe",
+      "justMyCode": false
+    }
+  ]
+}

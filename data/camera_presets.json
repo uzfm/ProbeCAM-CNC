@@ -1,0 +1,14 @@
+{
+  "dshow:1": {
+    "label": "Camera 1 (dshow)",
+    "index": 1,
+    "backend": "dshow",
+    "settings": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "exposure": -6,
+      "gain": 100
+    }
+  }
+}

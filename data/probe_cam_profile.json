@@ -1,0 +1,11 @@
+{
+  "camera_id": "dshow:1",
+  "camera_settings": {
+    "width": 1279,
+    "height": 717,
+    "fps": 30,
+    "exposure": -6,
+    "gain": 100
+  },
+  "port": "COM4"
+}

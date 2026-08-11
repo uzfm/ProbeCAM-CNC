@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1232</width>
+    <height>1046</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ProbeCAM CNC</string>
+  </property>
+  <layout class="QVBoxLayout" name="rootLayout">
+   <item>
+    <widget class="QWidget" name="topPanel">
+     <layout class="QHBoxLayout" name="topLayout">
+      <item>
+       <widget class="QGroupBox" name="cameraPreviewGroup">
+        <property name="title">
+         <string>Camera Preview</string>
+        </property>
+        <layout class="QVBoxLayout" name="cameraPreviewLayout">
+         <item>
+          <widget class="QLabel" name="previewLabel">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>520</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string>border:1px solid #777; background:#111; color:#fff;</string>
+           </property>
+           <property name="text">
+            <string>Camera preview</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="motorControlGroup">
+        <property name="title">
+         <string>Motor Control</string>
+        </property>
+        <layout class="QVBoxLayout" name="motorControlLayout">
+         <item>
+          <widget class="QComboBox" name="portCombo"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="motionButton">
+           <property name="text">
+            <string>Connect</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="jogPlusButton">
+           <property name="text">
+            <string>Jog +X</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="jogMinusButton">
+           <property name="text">
+            <string>Jog -X</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="homeButton">
+           <property name="text">
+            <string>Home</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="motorSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <widget class="QWidget" name="overviewTab">
+      <attribute name="title">
+       <string>Overview</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="overviewLayout"/>
+     </widget>
+     <widget class="QWidget" name="cameraTab">
+      <attribute name="title">
+       <string>Camera</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="cameraLayout">
+       <item>
+        <widget class="QComboBox" name="cameraCombo"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="refreshCamerasButton">
+         <property name="text">
+          <string>Refresh cameras</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="cameraButton">
+         <property name="text">
+          <string>Start camera</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="processButton">
+         <property name="text">
+          <string>Apply vision pass</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="cameraSettingsGroup">
+         <property name="title">
+          <string>Camera preset</string>
+         </property>
+         <layout class="QFormLayout" name="cameraSettingsLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelWidth">
+            <property name="text">
+             <string>Width</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="widthSpinBox">
+            <property name="minimum">
+             <number>160</number>
+            </property>
+            <property name="maximum">
+             <number>3840</number>
+            </property>
+            <property name="value">
+             <number>1280</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelHeight">
+            <property name="text">
+             <string>Height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="heightSpinBox">
+            <property name="minimum">
+             <number>120</number>
+            </property>
+            <property name="maximum">
+             <number>2160</number>
+            </property>
+            <property name="value">
+             <number>720</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelFPS">
+            <property name="text">
+             <string>FPS</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QSpinBox" name="fpsSpinBox">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>60</number>
+            </property>
+            <property name="value">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelExposure">
+            <property name="text">
+             <string>Exposure</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="exposureSpinBox">
+            <property name="minimum">
+             <number>-13</number>
+            </property>
+            <property name="maximum">
+             <number>10000</number>
+            </property>
+            <property name="value">
+             <number>-6</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelGain">
+            <property name="text">
+             <string>Gain</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSpinBox" name="gainSpinBox">
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="applyCameraSettingsButton">
+            <property name="text">
+             <string>Apply settings</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QPushButton" name="saveCameraSettingsButton">
+            <property name="text">
+             <string>Save preset</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="visionTab">
+      <attribute name="title">
+       <string>Vision</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="visionLayout">
+       <item>
+        <widget class="QLabel" name="visionResultLabel">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>120</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Vision pipeline: idle</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="motionTab">
+      <attribute name="title">
+       <string>Motion</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="motionLayout">
+       <item>
+        <widget class="QComboBox" name="portCombo">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="motionButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>100</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="tabletTracking">
+          <bool>false</bool>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Connect</string>
+         </property>
+         <property name="shortcut">
+          <string notr="true"/>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <property name="autoRepeat">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="jogPlusButton">
+         <property name="text">
+          <string>Jog +X</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="jogMinusButton">
+         <property name="text">
+          <string>Jog -X</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="homeButton">
+         <property name="text">
+          <string>Home</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="calibrationTab">
+      <attribute name="title">
+       <string>Calibration</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="calibrationLayout">
+       <item>
+        <widget class="QLabel" name="calibrationInfoLabel">
+         <property name="text">
+          <string>Calibration workflow: use checkerboard or Charuco, then save the result profile.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="settingsTab">
+      <attribute name="title">
+       <string>Settings</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="settingsLayout">
+       <item>
+        <widget class="QLabel" name="settingsLabel">
+         <property name="text">
+          <string>Profiles and settings are saved as JSON in the data/ folder.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="saveProfileButton">
+         <property name="text">
+          <string>Save profile</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="loadProfileButton">
+         <property name="text">
+          <string>Load profile</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="eventLog">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>220</height>
+      </size>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

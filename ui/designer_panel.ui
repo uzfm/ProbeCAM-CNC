@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="windowTitle">
+   <string>Designer Panel</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Designer panel (editable in Qt Designer)</string>
+     </property>
+     <layout class="QVBoxLayout" name="groupBoxLayout">
+      <item>
+       <widget class="QLabel" name="panelTitleLabel">
+        <property name="text">
+         <string>ProbeCAM CNC UI can be edited here without recompiling. Update the .ui file and reload the app.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="panelButton">
+        <property name="text">
+         <string>Reload profile</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
