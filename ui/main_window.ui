@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1329</width>
-    <height>1114</height>
+    <width>2245</width>
+    <height>1134</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -90,12 +90,6 @@ QLabel { color: #e8e8e8; }</string>
          <verstretch>1</verstretch>
         </sizepolicy>
        </property>
-       <property name="minimumSize">
-        <size>
-         <width>640</width>
-         <height>480</height>
-        </size>
-       </property>
        <property name="styleSheet">
         <string notr="true">border:1px solid #3a3f4b; border-radius:6px; background:#0d0f12; color:#6b7280; font-size:12pt;</string>
        </property>
@@ -106,22 +100,10 @@ QLabel { color: #e8e8e8; }</string>
      </item>
      <item>
       <widget class="QGroupBox" name="motionControlGroup">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
        <property name="minimumSize">
         <size>
-         <width>300</width>
+         <width>0</width>
          <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>340</width>
-         <height>16777215</height>
         </size>
        </property>
        <property name="title">
@@ -574,20 +556,17 @@ QLabel { color: #e8e8e8; }</string>
          </widget>
         </item>
         <item>
-         <spacer name="motionControlSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+         <widget class="QPlainTextEdit" name="eventLog">
+          <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>16777215</width>
+            <height>90</height>
            </size>
           </property>
-         </spacer>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -974,10 +953,10 @@ QLabel { color: #e8e8e8; }</string>
       <widget class="QTableWidget" name="measurementPointsTable">
        <property name="geometry">
         <rect>
-         <x>9</x>
-         <y>128</y>
-         <width>1331</width>
-         <height>251</height>
+         <x>10</x>
+         <y>120</y>
+         <width>2161</width>
+         <height>91</height>
         </rect>
        </property>
        <property name="rowCount">
@@ -1283,7 +1262,6 @@ QLabel { color: #e8e8e8; }</string>
       <zorder>measurementPointsTable</zorder>
       <zorder>gridLayoutWidget</zorder>
       <zorder>verticalLayoutWidget</zorder>
-      <zorder>formLayoutWidget</zorder>
       <zorder>visionResultLabel</zorder>
       <zorder>verticalLayoutWidget_2</zorder>
       <zorder>formLayoutWidget</zorder>
@@ -1502,66 +1480,369 @@ QLabel { color: #e8e8e8; }</string>
       </widget>
      </widget>
      <widget class="QWidget" name="workflowTab">
-      <attribute name="title"><string>ProbeCAM Workflow</string></attribute>
+      <attribute name="title">
+       <string>ProbeCAM Workflow</string>
+      </attribute>
       <widget class="QLabel" name="workflowTitleLabel">
-       <property name="geometry"><rect><x>20</x><y>20</y><width>900</width><height>30</height></rect></property>
-       <property name="text"><string>ProbeCAM CNC — послідовність Stage 1–7</string></property>
-       <property name="styleSheet"><string>font-weight:700; color:#8ac8ff; font-size:16px;</string></property>
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>900</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string>font-weight:700; color:#8ac8ff; font-size:16px;</string>
+       </property>
+       <property name="text">
+        <string>ProbeCAM CNC — послідовність Stage 1–7</string>
+       </property>
       </widget>
       <widget class="QGroupBox" name="workflowCameraGroup">
-       <property name="geometry"><rect><x>20</x><y>65</y><width>470</width><height>190</height></rect></property>
-       <property name="title"><string>Stage 1: Camera / Overlay / Zoom</string></property>
-       <widget class="QPushButton" name="workflowZoomMinusButton"><property name="geometry"><rect><x>20</x><y>35</y><width>90</width><height>32</height></rect></property><property name="text"><string>Zoom −</string></property></widget>
-       <widget class="QPushButton" name="workflowZoomResetButton"><property name="geometry"><rect><x>120</x><y>35</y><width>90</width><height>32</height></rect></property><property name="text"><string>Reset 1x</string></property></widget>
-       <widget class="QPushButton" name="workflowZoomPlusButton"><property name="geometry"><rect><x>220</x><y>35</y><width>90</width><height>32</height></rect></property><property name="text"><string>Zoom +</string></property></widget>
-       <widget class="QPushButton" name="workflowTargetButton"><property name="geometry"><rect><x>20</x><y>80</y><width>290</width><height>32</height></rect></property><property name="text"><string>Set target = frame center</string></property></widget>
-       <widget class="QDoubleSpinBox" name="workflowTargetDiameterSpin"><property name="geometry"><rect><x>320</x><y>80</y><width>120</width><height>32</height></rect></property><property name="minimum"><double>0.1</double></property><property name="maximum"><double>1000</double></property><property name="value"><double>5</double></property><property name="suffix"><string> mm</string></property></widget>
-       <widget class="QLabel" name="workflowZoomLabel"><property name="geometry"><rect><x>20</x><y>130</y><width>400</width><height>32</height></rect></property><property name="text"><string>Zoom: 1.00x</string></property></widget>
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>65</y>
+         <width>470</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Stage 1: Camera / Overlay / Zoom</string>
+       </property>
+       <widget class="QPushButton" name="workflowZoomMinusButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>35</y>
+          <width>90</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Zoom −</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="workflowZoomResetButton">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>35</y>
+          <width>90</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Reset 1x</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="workflowZoomPlusButton">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>35</y>
+          <width>90</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Zoom +</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="workflowTargetButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>290</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Set target = frame center</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="workflowTargetDiameterSpin">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>80</y>
+          <width>120</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="suffix">
+         <string> mm</string>
+        </property>
+        <property name="minimum">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>5.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="workflowZoomLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>130</y>
+          <width>400</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Zoom: 1.00x</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QGroupBox" name="workflowCalibrationGroup">
-       <property name="geometry"><rect><x>510</x><y>65</y><width>470</width><height>190</height></rect></property><property name="title"><string>Stage 2: Calibration</string></property>
-       <widget class="QPushButton" name="workflowOffsetButton"><property name="geometry"><rect><x>20</x><y>35</y><width>300</width><height>32</height></rect></property><property name="text"><string>Save Camera ↔ Spindle offset</string></property></widget>
-       <widget class="QDoubleSpinBox" name="workflowOffsetXSpin"><property name="geometry"><rect><x>330</x><y>35</y><width>110</width><height>32</height></rect></property><property name="minimum"><double>-10000</double></property><property name="maximum"><double>10000</double></property><property name="suffix"><string> X mm</string></property></widget>
-       <widget class="QDoubleSpinBox" name="workflowOffsetYSpin"><property name="geometry"><rect><x>330</x><y>80</y><width>110</width><height>32</height></rect></property><property name="minimum"><double>-10000</double></property><property name="maximum"><double>10000</double></property><property name="suffix"><string> Y mm</string></property></widget>
-       <widget class="QPushButton" name="workflowSaveCalibrationButton"><property name="geometry"><rect><x>20</x><y>125</y><width>300</width><height>32</height></rect></property><property name="text"><string>Save complete calibration profile</string></property></widget>
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>40</y>
+         <width>521</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Stage 2: Calibration</string>
+       </property>
+       <widget class="QPushButton" name="workflowOffsetButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>35</y>
+          <width>300</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save Camera ↔ Spindle offset</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="workflowOffsetXSpin">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>35</y>
+          <width>110</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="suffix">
+         <string> X mm</string>
+        </property>
+        <property name="minimum">
+         <double>-10000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="workflowOffsetYSpin">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>80</y>
+          <width>110</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="suffix">
+         <string> Y mm</string>
+        </property>
+        <property name="minimum">
+         <double>-10000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="workflowSaveCalibrationButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>300</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save complete calibration profile</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QGroupBox" name="workflowVisionGroup"><property name="geometry"><rect><x>20</x><y>275</y><width>470</width><height>190</height></rect></property><property name="title"><string>Stage 3–4: Measurement / Hole</string></property>
-       <widget class="QPushButton" name="workflowHoleButton"><property name="geometry"><rect><x>20</x><y>35</y><width>300</width><height>32</height></rect></property><property name="text"><string>Find hole / circle center</string></property></widget>
-       <widget class="QPushButton" name="workflowPointButton"><property name="geometry"><rect><x>20</x><y>80</y><width>300</width><height>32</height></rect></property><property name="text"><string>Add manual point P</string></property></widget>
-       <widget class="QPushButton" name="workflowAngleButton"><property name="geometry"><rect><x>20</x><y>125</y><width>300</width><height>32</height></rect></property><property name="text"><string>Calculate workpiece angle</string></property></widget>
+      <widget class="QGroupBox" name="workflowVisionGroup">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>275</y>
+         <width>470</width>
+         <height>190</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Stage 3–4: Measurement / Hole</string>
+       </property>
+       <widget class="QPushButton" name="workflowHoleButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>35</y>
+          <width>300</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Find hole / circle center</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="workflowPointButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>300</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add manual point P</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="workflowAngleButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>125</y>
+          <width>300</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Calculate workpiece angle</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QGroupBox" name="workflowOutputGroup"><property name="geometry"><rect><x>510</x><y>275</y><width>470</width><height>190</height></rect></property><property name="title"><string>Stage 5–7: Zero / Export</string></property>
-       <widget class="QPushButton" name="workflowSetZeroButton"><property name="geometry"><rect><x>20</x><y>35</y><width>300</width><height>32</height></rect></property><property name="text"><string>Set XY zero from current position</string></property></widget>
-       <widget class="QPushButton" name="workflowExportButton"><property name="geometry"><rect><x>20</x><y>80</y><width>300</width><height>32</height></rect></property><property name="text"><string>Export G-code parameters JSON</string></property></widget>
-       <widget class="QLabel" name="workflowStatusLabel"><property name="geometry"><rect><x>20</x><y>125</y><width>420</width><height>32</height></rect></property><property name="text"><string>Workflow ready</string></property></widget>
+      <widget class="QGroupBox" name="workflowOutputGroup">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>275</y>
+         <width>470</width>
+         <height>190</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Stage 5–7: Zero / Export</string>
+       </property>
+       <widget class="QPushButton" name="workflowSetZeroButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>35</y>
+          <width>300</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Set XY zero from current position</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="workflowExportButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>300</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Export G-code parameters JSON</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="workflowStatusLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>125</y>
+          <width>420</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Workflow ready</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="helpTab">
-      <attribute name="title"><string>Підказки / Інструкція</string></attribute>
+      <attribute name="title">
+       <string>Підказки / Інструкція</string>
+      </attribute>
       <widget class="QTextBrowser" name="helpTextBrowser">
-       <property name="geometry"><rect><x>15</x><y>15</y><width>1000</width><height>650</height></rect></property>
-       <property name="openExternalLinks"><bool>false</bool></property>
-       <property name="html"><string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;
-&lt;h2&gt;ProbeCAM CNC — коротка інструкція&lt;/h2&gt;
-&lt;p&gt;Перед точними вимірюваннями зафіксуйте камеру механічно, об'єктив, focus, роздільність і висоту над робочою площиною. Digital zoom не змінює калібрування.&lt;/p&gt;
-&lt;h3&gt;1. Запуск камери та overlay&lt;/h3&gt;
-&lt;ol&gt;&lt;li&gt;Відкрийте вкладку «Камера», виберіть камеру та натисніть «Запустити камеру».&lt;/li&gt;&lt;li&gt;Переконайтеся, що відео не чорне та параметри resolution/FPS встановлені до калібрування.&lt;/li&gt;&lt;li&gt;У «ProbeCAM Workflow» використовуйте Zoom лише для зручності наведення. Vision працює з оригінальним кадром.&lt;/li&gt;&lt;/ol&gt;
-&lt;h3&gt;2. Калібрування камери (оптика та distortion)&lt;/h3&gt;
-&lt;ol&gt;&lt;li&gt;Покладіть checkerboard перпендикулярно камері в площині заготовки.&lt;/li&gt;&lt;li&gt;У «Калібрування» введіть кількість внутрішніх стовпців/рядків і розмір квадрата в мм.&lt;/li&gt;&lt;li&gt;Покажіть усю дошку в 8–15 різних положеннях, місцях і кутах. Для кожного кадру натискайте «Захопити шахівницю».&lt;/li&gt;&lt;li&gt;Натисніть «Розрахувати калібрування камери». RMS reprojection error збережеться у профілі. Застосовуйте distortion correction під час вимірювань.&lt;/li&gt;&lt;li&gt;Для fisheye об'єктива використовуйте окремо режим «риб'яче око».&lt;/li&gt;&lt;/ol&gt;
-&lt;h3&gt;3. Калібрування масштабу pixels/mm&lt;/h3&gt;
-&lt;ol&gt;&lt;li&gt;Покладіть у робочу площину еталон відомої довжини.&lt;/li&gt;&lt;li&gt;У «Технічний зір» увімкніть «Малювати лінію мишею» та проведіть лінію точно між мітками.&lt;/li&gt;&lt;li&gt;Введіть реальну довжину в мм і натисніть «Розрахувати піксель/мм».&lt;/li&gt;&lt;li&gt;Не змінюйте resolution, focus, оптичний zoom або висоту камери після цього. При зміні повторіть калібрування.&lt;/li&gt;&lt;/ol&gt;
-&lt;h3&gt;4. Camera Target та Camera ↔ Spindle offset&lt;/h3&gt;
-&lt;ol&gt;&lt;li&gt;У «ProbeCAM Workflow» натисніть «Set target = frame center», коли камера працює. Це задає pixel target, який використовується для dX/dY.&lt;/li&gt;&lt;li&gt;Встановіть тонку голку/інструмент у шпиндель і наведіть її на контрольну точку. Запишіть Machine X/Y.&lt;/li&gt;&lt;li&gt;Перемістіть станок так, щоб ця сама точка була під Camera Target. Різниця між позиціями є camera_to_spindle X/Y.&lt;/li&gt;&lt;li&gt;Введіть X/Y у Stage 2 та натисніть «Save Camera ↔ Spindle offset», потім збережіть calibration profile.&lt;/li&gt;&lt;li&gt;Повторіть вимірювання 3–5 разів з однаковим напрямком під'їзду. Велика розбіжність означає backlash або нестабільне кріплення.&lt;/li&gt;&lt;/ol&gt;
-&lt;h3&gt;5. Як знайти центр отвору&lt;/h3&gt;
-&lt;ol&gt;&lt;li&gt;Запустіть камеру, приблизно наведіть target на отвір і за потреби увімкніть Zoom.&lt;/li&gt;&lt;li&gt;У «Технічний зір» виберіть ROI та обведіть отвір. ROI має містити весь контур, але не багато зайвих об'єктів.&lt;/li&gt;&lt;li&gt;Натисніть «Find hole / circle center». Програма покаже центр, dX/dY, confidence і residual.&lt;/li&gt;&lt;li&gt;Якщо confidence низький або центр неправильний: змініть ROI, освітлення/пороги Canny та повторіть. Нуль автоматично не встановлюйте за ненадійного результату.&lt;/li&gt;&lt;/ol&gt;
-&lt;h3&gt;6. Як визначити кут заготовки&lt;/h3&gt;
-&lt;ol&gt;&lt;li&gt;Для ручного способу увімкніть «Малювати лінію мишею» та проведіть лінію вздовж прямої грані. Кут рахується від осі X з урахуванням напрямку Y.&lt;/li&gt;&lt;li&gt;Для видимої грані можна натиснути «Calculate workpiece angle» після обробки контуру. Перевірте, що вибраний саме потрібний контур.&lt;/li&gt;&lt;li&gt;Запишіть/експортуйте кут у параметри заготовки. На цьому етапі ProbeCAM не повертає автоматично всю систему Machine/Work координат.&lt;/li&gt;&lt;/ol&gt;
-&lt;h3&gt;7. Як встановити нульову точку&lt;/h3&gt;
-&lt;ol&gt;&lt;li&gt;Знайдіть центр отвору або поставте ручну точку. Перевірте calibration, target і Camera↔Spindle offset.&lt;/li&gt;&lt;li&gt;Переконайтеся, що GRBL підключений, стан не Alarm, Z безпечний, а переміщення не вийде за soft limits.&lt;/li&gt;&lt;li&gt;Для нуля за поточною позицією натисніть «Set XY zero from current position» або окремо X/Y у панелі руху. GRBL отримає G10 L20.&lt;/li&gt;&lt;li&gt;Після підтвердження перевірте WPos повторним статус-запитом. Для роботи камерою фізична позиція каретки відрізняється від шпинделя на збережений offset, але Work X0/Y0 не змінюється.&lt;/li&gt;&lt;/ol&gt;
-&lt;h3&gt;8. Збереження&lt;/h3&gt;
-&lt;p&gt;«Save complete calibration profile» зберігає профіль камери. «Export G-code parameters JSON» зберігає zero, angle, точки, отвори, розміри, timestamp і назву calibration profile у &lt;code&gt;data/workpiece_parameters.json&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Безпека:&lt;/b&gt; автоматичний рух запускайте тільки після перевірки Alarm/soft limits/Z та після візуального підтвердження знайденої геометрії.&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;</string></property>
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>1141</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;ProbeCAM CNC — коротка інструкція&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Перед точними вимірюваннями зафіксуйте камеру механічно, об'єктив, focus, роздільність і висоту над робочою площиною. Digital zoom не змінює калібрування.&lt;/p&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;1. Запуск камери та overlay&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Відкрийте вкладку «Камера», виберіть камеру та натисніть «Запустити камеру».&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Переконайтеся, що відео не чорне та параметри resolution/FPS встановлені до калібрування.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;У «ProbeCAM Workflow» використовуйте Zoom лише для зручності наведення. Vision працює з оригінальним кадром.&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;2. Калібрування камери (оптика та distortion)&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Покладіть checkerboard перпендикулярно камері в площині заготовки.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;У «Калібрування» введіть кількість внутрішніх стовпців/рядків і розмір квадрата в мм.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Покажіть усю дошку в 8–15 різних положеннях, місцях і кутах. Для кожного кадру натискайте «Захопити шахівницю».&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Натисніть «Розрахувати калібрування камери». RMS reprojection error збережеться у профілі. Застосовуйте distortion correction під час вимірювань.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для fisheye об'єктива використовуйте окремо режим «риб'яче око».&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;3. Калібрування масштабу pixels/mm&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Покладіть у робочу площину еталон відомої довжини.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;У «Технічний зір» увімкніть «Малювати лінію мишею» та проведіть лінію точно між мітками.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Введіть реальну довжину в мм і натисніть «Розрахувати піксель/мм».&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Не змінюйте resolution, focus, оптичний zoom або висоту камери після цього. При зміні повторіть калібрування.&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;4. Camera Target та Camera ↔ Spindle offset&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;У «ProbeCAM Workflow» натисніть «Set target = frame center», коли камера працює. Це задає pixel target, який використовується для dX/dY.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Встановіть тонку голку/інструмент у шпиндель і наведіть її на контрольну точку. Запишіть Machine X/Y.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Перемістіть станок так, щоб ця сама точка була під Camera Target. Різниця між позиціями є camera_to_spindle X/Y.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Введіть X/Y у Stage 2 та натисніть «Save Camera ↔ Spindle offset», потім збережіть calibration profile.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Повторіть вимірювання 3–5 разів з однаковим напрямком під'їзду. Велика розбіжність означає backlash або нестабільне кріплення.&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;5. Як знайти центр отвору&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Запустіть камеру, приблизно наведіть target на отвір і за потреби увімкніть Zoom.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;У «Технічний зір» виберіть ROI та обведіть отвір. ROI має містити весь контур, але не багато зайвих об'єктів.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Натисніть «Find hole / circle center». Програма покаже центр, dX/dY, confidence і residual.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Якщо confidence низький або центр неправильний: змініть ROI, освітлення/пороги Canny та повторіть. Нуль автоматично не встановлюйте за ненадійного результату.&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;6. Як визначити кут заготовки&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для ручного способу увімкніть «Малювати лінію мишею» та проведіть лінію вздовж прямої грані. Кут рахується від осі X з урахуванням напрямку Y.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для видимої грані можна натиснути «Calculate workpiece angle» після обробки контуру. Перевірте, що вибраний саме потрібний контур.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Запишіть/експортуйте кут у параметри заготовки. На цьому етапі ProbeCAM не повертає автоматично всю систему Machine/Work координат.&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;7. Як встановити нульову точку&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Знайдіть центр отвору або поставте ручну точку. Перевірте calibration, target і Camera↔Spindle offset.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Переконайтеся, що GRBL підключений, стан не Alarm, Z безпечний, а переміщення не вийде за soft limits.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для нуля за поточною позицією натисніть «Set XY zero from current position» або окремо X/Y у панелі руху. GRBL отримає G10 L20.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Після підтвердження перевірте WPos повторним статус-запитом. Для роботи камерою фізична позиція каретки відрізняється від шпинделя на збережений offset, але Work X0/Y0 не змінюється.&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;8. Збереження&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;«Save complete calibration profile» зберігає профіль камери. «Export G-code parameters JSON» зберігає zero, angle, точки, отвори, розміри, timestamp і назву calibration profile у &lt;span style=&quot; font-family:'Courier New';&quot;&gt;data/workpiece_parameters.json&lt;/span&gt;.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Безпека:&lt;/span&gt; автоматичний рух запускайте тільки після перевірки Alarm/soft limits/Z та після візуального підтвердження знайденої геометрії.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>false</bool>
+       </property>
       </widget>
      </widget>
      <widget class="QWidget" name="settingsTab">
@@ -1574,13 +1855,13 @@ QLabel { color: #e8e8e8; }</string>
          <x>10</x>
          <y>20</y>
          <width>141</width>
-         <height>191</height>
+         <height>111</height>
         </rect>
        </property>
        <property name="title">
         <string>Підключення</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>11</x>
@@ -1624,8 +1905,8 @@ QLabel { color: #e8e8e8; }</string>
       <widget class="QSplitter" name="splitter">
        <property name="geometry">
         <rect>
-         <x>180</x>
-         <y>40</y>
+         <x>20</x>
+         <y>150</y>
          <width>133</width>
          <height>58</height>
         </rect>
@@ -1661,12 +1942,30 @@ QLabel { color: #e8e8e8; }</string>
        </property>
       </widget>
       <widget class="QPushButton" name="detectHoleCenterButton">
-       <property name="geometry"><rect><x>20</x><y>585</y><width>220</width><height>32</height></rect></property>
-       <property name="text"><string>Знайти центр отвору</string></property>
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>585</y>
+         <width>220</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Знайти центр отвору</string>
+       </property>
       </widget>
       <widget class="QPushButton" name="exportWorkpieceButton">
-       <property name="geometry"><rect><x>250</x><y>585</y><width>250</width><height>32</height></rect></property>
-       <property name="text"><string>Зберегти параметри заготовки</string></property>
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>585</y>
+         <width>250</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Зберегти параметри заготовки</string>
+       </property>
       </widget>
       <widget class="QLabel" name="settingsLabel">
        <property name="geometry">
@@ -1693,19 +1992,6 @@ QLabel { color: #e8e8e8; }</string>
       <string>Пошук камер насамперед використовує DirectShow та Windows UVC</string>
      </property>
      <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPlainTextEdit" name="eventLog">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>90</height>
-      </size>
-     </property>
-     <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
